@@ -1,3 +1,8 @@
+---
+name: skill_vasconcelos
+description: Cria o documento de handoff estratégico de um cliente de consultoria em HTML, cobrindo cada semana do projeto, funis, ICPs, materiais produzidos, alertas críticos e links para os entregáveis publicados. Use ao encerrar um projeto ou passar a conta de um cliente para outra pessoa ou equipe.
+---
+
 # Skill Handoff
 **skill_vasconcelos** | Versão 1.1 | Criado por: Eder Vasconcelos
 
