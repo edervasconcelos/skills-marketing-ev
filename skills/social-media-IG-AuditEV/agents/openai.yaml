@@ -1,0 +1,7 @@
+interface:
+  display_name: "Social Media IG Audit EV"
+  short_description: "Auditoria IG com escopo e evidências"
+  default_prompt: "Use $social-media-IG-AuditEV para primeiro alinhar o escopo da auditoria de Instagram, pedir aprovação e depois produzir diagnóstico, evidências públicas, fallback com Apify, plano editorial, HTML consolidado e apresentação."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Tráfego Pago — [NOME DO CLIENTE]</title>
+<style>
+  :root{
+    --red:#E4002B;
+    --red-dark:#a5001f;
+    --black:#0d0d0d;
+    --ink:#1a1a1a;
+    --gray:#5c5c5c;
+    --line:#e6e6e6;
+    --bg-soft:#f7f7f7;
+    --ok:#1a7f37;
+    --warn:#b45309;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:#fff; line-height:1.55; font-size:15px;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- CAPA ---------- */
+  .cover{
+    background:var(--black); color:#fff; padding:100px 32px 80px;
+    background-image: radial-gradient(circle at 85% 15%, rgba(228,0,43,0.18), transparent 45%);
+  }
+  .cover .eyebrow{color:var(--red); font-weight:700; letter-spacing:.12em; font-size:13px; text-transform:uppercase;}
+  .cover h1{font-size:44px; line-height:1.1; margin:18px 0 8px; font-weight:800;}
+  .cover h1 span{color:var(--red);}
+  .cover p.sub{color:#c9c9c9; font-size:17px; max-width:640px;}
+  .cover .meta{display:flex; flex-wrap:wrap; gap:28px; margin-top:48px; border-top:1px solid #2b2b2b; padding-top:24px;}
+  .cover .meta div{font-size:13px; color:#9c9c9c;}
+  .cover .meta strong{display:block; color:#fff; font-size:14px; margin-top:2px;}
+
+  /* ---------- SECTION ---------- */
+  section{padding:56px 0; border-bottom:1px solid var(--line);}
+  section.dark{background:var(--black); color:#fff; border-bottom:none;}
+  section.dark .wrap{padding-top:8px; padding-bottom:8px;}
+  .kicker{color:var(--red); font-weight:700; letter-spacing:.1em; font-size:12px; text-transform:uppercase;}
+  h2{font-size:26px; margin:6px 0 22px; font-weight:800;}
+  h3{font-size:17px; margin:28px 0 10px; font-weight:700;}
+  p{color:var(--ink);}
+  .dark p{color:#d7d7d7;}
+
+  table{width:100%; border-collapse:collapse; margin:14px 0 6px; font-size:13.5px;}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{background:var(--bg-soft); font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.03em; color:var(--gray);}
+  tr:last-child td{border-bottom:none;}
+
+  .badge{display:inline-block; padding:2px 9px; border-radius:20px; font-size:11.5px; font-weight:700;}
+  .badge.ok{background:#e8f6ec; color:var(--ok);}
+  .badge.pend{background:#fdf1e0; color:var(--warn);}
+  .badge.na{background:var(--bg-soft); color:var(--gray);}
+
+  .callout{background:var(--bg-soft); border-left:4px solid var(--red); padding:14px 18px; border-radius:0 6px 6px 0; margin:16px 0; font-size:14px;}
+  .callout.block{background:#fdecec; border-left-color:var(--red-dark);}
+  .callout strong{color:var(--red-dark);}
+
+  .study-box{background:#fff8f0; border:1px solid #f0ddb8; border-radius:8px; padding:18px 20px; margin:18px 0;}
+  .study-box h4{margin:0 0 4px; font-size:14px; display:flex; align-items:center; gap:8px;}
+  .study-box .study-meta{font-size:12px; color:var(--gray); margin-bottom:10px;}
+  .study-box ul{list-style:none; padding:0; margin:0;}
+  .study-box li{padding:6px 0; border-bottom:1px dashed #ecdcb8; font-size:13px;}
+  .study-box li:last-child{border-bottom:none;}
+  .study-box a{color:var(--red-dark); text-decoration:none; font-weight:600;}
+  .study-box a:hover{text-decoration:underline;}
+  .study-box .study-tag{display:inline-block; font-size:10.5px; font-weight:700; color:#8a6d1a; background:#f5e6c2; border-radius:4px; padding:1px 6px; margin-right:6px; vertical-align:middle;}
+
+  .guide-box{background:#f4f8f6; border:1px solid #cfe6da; border-radius:8px; padding:16px 20px; margin:16px 0;}
+  .guide-box h4{margin:0 0 2px; font-size:13.5px; color:#1a5c3f;}
+  .guide-box .guide-meta{font-size:11.5px; color:var(--gray); margin-bottom:10px;}
+  .guide-steps{margin:0; padding-left:20px;}
+  .guide-steps li{font-size:13px; margin-bottom:6px; color:var(--ink);}
+  .guide-steps li strong{color:var(--red-dark);}
+
+  .ref-shot{margin:0 0 14px;}
+  .ref-shot img{max-width:100%; border-radius:6px; border:1px solid var(--line); display:block;}
+  .ref-shot figcaption{font-size:11.5px; color:var(--gray); margin-top:6px;}
+
+  .dark .guide-box{background:#171717; border-color:#2e2e2e;}
+  .dark .guide-box h4{color:#4fbf8a;}
+  .dark .guide-box .guide-meta{color:#9c9c9c;}
+  .dark .guide-steps li{color:#d7d7d7;}
+  .dark .guide-steps li strong{color:#ff6a6a;}
+
+  /* ---------- ACCORDION (menu sanfona dos guias passo a passo) ---------- */
+  details.guide-box{padding:0;}
+  details.guide-box > summary{list-style:none; cursor:pointer; padding:14px 20px; display:flex; align-items:flex-start; gap:10px;}
+  details.guide-box > summary::-webkit-details-marker{display:none;}
+  details.guide-box > summary::marker{content:"";}
+  details.guide-box > summary .chev{flex:0 0 auto; color:#1a5c3f; font-size:12px; margin-top:3px; transition:transform .18s ease; display:inline-block;}
+  details.guide-box[open] > summary .chev{transform:rotate(90deg);}
+  details.guide-box > summary .summary-text{flex:1;}
+  details.guide-box > summary h4{margin:0 0 2px;}
+  details.guide-box > summary .guide-meta{margin-bottom:0;}
+  details.guide-box .guide-body{padding:2px 20px 18px;}
+  .dark details.guide-box > summary .chev{color:#4fbf8a;}
+
+  /* ---------- ACCORDION (menu sanfona de tópico/referência — separa conteúdo sem ser tutorial) ---------- */
+  details.topic-box{background:#fafafa; border:1px solid #e4e4e4; border-radius:8px; padding:0; margin:20px 0;}
+  details.topic-box > summary{list-style:none; cursor:pointer; padding:13px 20px; display:flex; align-items:center; gap:10px;}
+  details.topic-box > summary::-webkit-details-marker{display:none;}
+  details.topic-box > summary::marker{content:"";}
+  details.topic-box > summary .chev{flex:0 0 auto; color:var(--gray); font-size:12px; transition:transform .18s ease; display:inline-block;}
+  details.topic-box[open] > summary .chev{transform:rotate(90deg);}
+  details.topic-box > summary .summary-text{flex:1;}
+  details.topic-box > summary h3{margin:0;}
+  details.topic-box .topic-body{padding:2px 20px 20px;}
+  .dark details.topic-box{background:#151515; border-color:#2a2a2a;}
+  .dark details.topic-box > summary .chev{color:#9c9c9c;}
+
+  /* ---------- TRILHA DE CLIQUES (breadcrumb genérico) ---------- */
+  .ui-path{display:flex; flex-wrap:wrap; align-items:center; gap:5px; background:#fff; border:1px solid #cfe6da; border-radius:6px; padding:8px 12px; margin:0 0 12px; font-size:11.5px; color:#3a3a3a;}
+  .ui-path i{color:#9c9c9c; font-style:normal;}
+  .ui-path .hl{background:var(--red); color:#fff; padding:1px 7px; border-radius:4px; font-weight:700;}
+  .dark .ui-path{background:#111; border-color:#2e2e2e; color:#d7d7d7;}
+
+  .src-btn{display:inline-flex; align-items:center; gap:5px; white-space:nowrap; padding:5px 12px; border-radius:20px; background:var(--red); color:#fff !important; font-size:11.5px; font-weight:700; text-decoration:none; line-height:1.4; margin:0 0 12px;}
+  .src-btn:hover{background:var(--red-dark);}
+  .src-btn.secondary{background:var(--black);}
+  .src-btn.secondary:hover{background:#2b2b2b;}
+  .dark .src-btn{background:#3a3a3a;}
+  .dark .src-btn:hover{background:#4d4d4d;}
+  .src-note{font-size:11px; color:var(--gray); margin:-6px 0 12px;}
+
+  .view-toggle{position:sticky; top:0; z-index:100; display:flex; justify-content:center; gap:0; background:var(--black); padding:10px 16px; box-shadow:0 2px 10px rgba(0,0,0,.2);}
+  .view-toggle button{appearance:none; border:1.5px solid #444; background:transparent; color:#bbb; font-weight:700; font-size:12.5px; letter-spacing:.02em; padding:8px 26px; cursor:pointer; transition:background .15s ease, color .15s ease, border-color .15s ease; font-family:inherit;}
+  .view-toggle button:first-child{border-radius:20px 0 0 20px; border-right:none;}
+  .view-toggle button:last-child{border-radius:0 20px 20px 0;}
+  .view-toggle button.active{background:var(--red); border-color:var(--red); color:#fff;}
+  .view-toggle button:hover:not(.active){border-color:#777; color:#fff;}
+
+  /* ---------- MOCKUPS GENÉRICOS DE TELA (sem dado real de conta) ---------- */
+  .ui-mock{border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:0 0 14px; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.05);}
+  .ui-mock .ui-mock-head{background:#f0f2f5; border-bottom:1px solid var(--line); padding:8px 14px; display:flex; align-items:center; gap:8px; font-size:11.5px; font-weight:700; color:#1c2b33;}
+  .ui-mock .ui-mock-head .dot{width:8px; height:8px; border-radius:50%; background:#1877f2; flex:0 0 auto;}
+  .ui-mock .ui-mock-body{padding:16px;}
+  .ui-mock figcaption{padding:0 14px 12px; margin:0;}
+
+  .obj-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:8px;}
+  .obj-grid .obj-btn{border:1.5px solid #dbe1e6; background:#fff; border-radius:8px; padding:10px 8px; font-size:11px; text-align:center; color:#3a3a3a;}
+  .obj-grid .obj-btn.sel{border-color:#1877f2; background:#eaf2ff; color:#1877f2; font-weight:700;}
+
+  .toggle-row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); font-size:12px;}
+  .toggle-row:last-child{border-bottom:none;}
+  .toggle-row .sw{width:34px; height:19px; border-radius:20px; background:#dbe1e6; position:relative; flex:0 0 auto;}
+  .toggle-row .sw.on{background:#1877f2;}
+  .toggle-row .sw::after{content:""; position:absolute; top:2px; left:2px; width:15px; height:15px; border-radius:50%; background:#fff;}
+  .toggle-row .sw.on::after{left:17px;}
+
+  .field-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px;}
+  .field-grid .field label{display:block; font-size:10px; color:var(--gray); margin-bottom:3px; font-weight:700; text-transform:uppercase; letter-spacing:.03em;}
+  .field-grid .field .fake-input{border:1px solid #dbe1e6; border-radius:6px; padding:7px 10px; font-size:12px; color:#3a3a3a; background:#fafbfc;}
+
+  .check-list-mock{list-style:none; margin:0; padding:0; font-size:12px;}
+  .check-list-mock li{display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px dashed var(--line);}
+  .check-list-mock li:last-child{border-bottom:none;}
+  .check-list-mock .cb{width:14px; height:14px; border-radius:3px; border:1.5px solid #b7c0c7; flex:0 0 auto;}
+  .check-list-mock .cb.on{background:#1877f2; border-color:#1877f2; position:relative;}
+  .check-list-mock .cb.on::after{content:"✓"; color:#fff; font-size:10px; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;}
+
+  /* ---------- BLOCOS DE PLATAFORMA (separação visual clara: onde começa/termina cada uma) ---------- */
+  .platform-block{border:1px solid; border-radius:12px; padding:22px 24px 6px; margin:22px 0 28px; position:relative;}
+  .platform-block > h3:first-of-type{margin-top:4px;}
+  .platform-badge{display:inline-flex; align-items:center; gap:7px; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; padding:5px 12px; border-radius:20px; margin-bottom:16px;}
+  .platform-badge .pdot{width:9px; height:9px; border-radius:50%; flex:0 0 auto;}
+
+  .platform-block.meta{background:#f6f9ff; border-color:#d7e6fb;}
+  .platform-block.meta .platform-badge{background:#1877f2; color:#fff;}
+  .platform-block.meta .platform-badge .pdot{background:#fff;}
+
+  .platform-block.google{background:#fffdf5; border-color:#f0e6bd;}
+  .platform-block.google .platform-badge{background:#fff; color:#3c4043; border:1.5px solid #dadce0;}
+  .platform-block.google .platform-badge .pdot{background:conic-gradient(#4285F4 0 25%, #EA4335 25% 50%, #FBBC05 50% 75%, #34A853 75% 100%);}
+
+  .platform-block.linkedin{background:#f3f9fd; border-color:#c9e2f2;}
+  .platform-block.linkedin .platform-badge{background:#0a66c2; color:#fff;}
+  .platform-block.linkedin .platform-badge .pdot{background:#fff;}
+
+  .platform-block.shared{background:var(--bg-soft); border-color:var(--line);}
+  .platform-block.shared .platform-badge{background:var(--black); color:#fff;}
+  .platform-block.shared .platform-badge .pdot{background:#fff;}
+
+  .dark .platform-block.meta{background:#0f1a26; border-color:#1c3350;}
+  .dark .platform-block.google{background:#201c0e; border-color:#3a331a;}
+  .dark .platform-block.shared{background:#171717; border-color:#2e2e2e;}
+
+  .platform-block .guide-box, .platform-block details.guide-box{background:#fff;}
+  .dark .platform-block .guide-box{background:#171717;}
+  .platform-block details.topic-box{background:#fff;}
+  .dark .platform-block details.topic-box{background:#171717;}
+
+  ul.checklist{list-style:none; padding:0; margin:10px 0;}
+  ul.checklist li{padding:8px 0 8px 30px; position:relative; border-bottom:1px dashed var(--line); font-size:14px;}
+  ul.checklist li::before{content:"☐"; position:absolute; left:0; color:var(--red); font-size:16px;}
+  ul.errors{padding-left:20px;}
+  ul.errors li{margin-bottom:8px; font-size:14px;}
+
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:18px 0;}
+  .card{border:1px solid var(--line); border-top:3px solid var(--red); border-radius:8px; padding:16px;}
+  .card h4{margin:0 0 8px; font-size:14px;}
+  .card p{font-size:13px; color:var(--gray); margin:0;}
+
+  code, .mono{font-family:"SFMono-Regular",Consolas,monospace; background:var(--bg-soft); padding:1px 6px; border-radius:4px; font-size:13px;}
+
+  figure{margin:24px 0; text-align:center;}
+  figcaption{font-size:12.5px; color:var(--gray); margin-top:8px;}
+
+  /* ---------- SCREENSHOT PLACEHOLDER ---------- */
+  .screenshot-slot{
+    border:2px dashed #c9c9c9; border-radius:10px; background:var(--bg-soft);
+    padding:36px 20px; text-align:center; color:var(--gray); font-size:13.5px;
+  }
+  .screenshot-slot .icon{font-size:26px; display:block; margin-bottom:8px;}
+  .screenshot-slot img{max-width:100%; border-radius:8px; display:block; margin:0 auto;}
+
+  /* ---------- CREATIVE MOCKUPS ---------- */
+  .mockup-row{display:flex; flex-wrap:wrap; gap:24px; margin:20px 0; align-items:flex-start;}
+
+  .ig-post{width:270px; border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,.08); background:#fff;}
+  .ig-post .ig-head{display:flex; align-items:center; gap:8px; padding:10px 12px;}
+  .ig-post .ig-avatar{width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--red),#7a0018);}
+  .ig-post .ig-name{font-size:12.5px; font-weight:700;}
+  .ig-post .ig-art{aspect-ratio:1/1; background:linear-gradient(160deg,var(--black),#3a3a3a); color:#fff; display:flex; align-items:center; justify-content:center; padding:18px; text-align:center; font-weight:800; font-size:16px; line-height:1.25;}
+  .ig-post .ig-art span{color:var(--red);}
+  .ig-post .ig-actions{padding:10px 12px 4px; font-size:16px; color:#333;}
+  .ig-post .ig-caption{padding:0 12px 12px; font-size:12px; color:#333;}
+  .ig-post .ig-caption b{margin-right:4px;}
+  .ig-post .ig-cta{margin:0 12px 12px; background:var(--bg-soft); border-radius:6px; padding:8px 10px; font-size:12px; font-weight:700; display:flex; justify-content:space-between; color:var(--ink);}
+
+  .ig-story{width:170px; height:300px; border-radius:18px; overflow:hidden; position:relative; background:linear-gradient(180deg,var(--black),#2a2a2a); box-shadow:0 4px 16px rgba(0,0,0,.1); color:#fff; padding:14px;}
+  .ig-story .story-bar{height:3px; background:rgba(255,255,255,.35); border-radius:3px; margin-bottom:10px;}
+  .ig-story .story-bar::after{content:""; display:block; width:60%; height:100%; background:#fff; border-radius:3px;}
+  .ig-story .story-hook{font-weight:800; font-size:16px; margin-top:60px; line-height:1.2;}
+  .ig-story .story-hook span{color:var(--red);}
+  .ig-story .story-cta{position:absolute; bottom:14px; left:14px; right:14px; background:#fff; color:var(--black); text-align:center; padding:8px; border-radius:20px; font-size:11.5px; font-weight:700;}
+
+  .serp{width:100%; max-width:520px; border:1px solid var(--line); border-radius:10px; padding:16px 18px; background:#fff;}
+  .serp .ad-tag{font-size:11px; font-weight:800; color:#1a7f37; border:1px solid #1a7f37; border-radius:3px; padding:0 4px; display:inline-block; margin-right:6px;}
+  .serp .serp-url{font-size:12.5px; color:#1a1a1a; margin-top:4px;}
+  .serp .serp-title{color:#1558d6; font-size:16.5px; margin:4px 0 4px; font-weight:500;}
+  .serp .serp-desc{font-size:13px; color:#4d4d4d;}
+  .serp .serp-links{display:flex; flex-wrap:wrap; gap:6px 18px; margin-top:8px;}
+  .serp .serp-links span{color:#1558d6; font-size:12.5px;}
+
+  .toc{background:var(--bg-soft); border-radius:10px; padding:20px 26px; margin:20px 0;}
+  .toc ol{columns:2; column-gap:32px; padding-left:18px; font-size:13.5px;}
+  .toc li{margin-bottom:6px;}
+  .toc a{color:var(--ink); text-decoration:none;}
+  .toc a:hover{color:var(--red);}
+
+  @media (max-width:680px){
+    .cover h1{font-size:30px;}
+    .toc ol{columns:1;}
+    .wrap{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== TOGGLE DE PLATAFORMA =================== -->
+<div class="view-toggle" role="tablist" aria-label="Escolher plataforma">
+  <button type="button" data-view="meta" onclick="setView('meta')">Meta Ads</button>
+  <button type="button" data-view="google" onclick="setView('google')">Google Ads</button>
+</div>
+<script>
+  function setView(view){
+    document.body.setAttribute('data-view', view);
+    document.querySelectorAll('section').forEach(function(sec){
+      var metaBlocks = sec.querySelectorAll('.platform-block.meta');
+      var googleBlocks = sec.querySelectorAll('.platform-block.google');
+      if(metaBlocks.length && googleBlocks.length){
+        metaBlocks.forEach(function(b){ b.style.display = (view === 'google') ? 'none' : ''; });
+        googleBlocks.forEach(function(b){ b.style.display = (view === 'meta') ? 'none' : ''; });
+      }
+    });
+    document.querySelectorAll('.view-toggle button').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-view') === view);
+    });
+    try{ localStorage.setItem('manualView', view); }catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var saved = 'meta';
+    try{ saved = localStorage.getItem('manualView') || 'meta'; }catch(e){}
+    setView(saved);
+  });
+</script>
+
+<!-- =================== CAPA =================== -->
+<header class="cover">
+  <div class="wrap">
+    <div class="eyebrow">Manual de Tráfego Pago</div>
+    <h1>Tráfego Pago<br><span>[NOME DO CLIENTE]</span></h1>
+    <p class="sub">[Resumo de uma linha: plataformas ativas + objetivo do manual — ex: "Meta Ads + Google Ads — da primeira campanha à escala com CPA controlado."]</p>
+    <div class="meta">
+      <div>Data-base <strong>[DD/MM/AAAA]</strong></div>
+      <div>Semana da consultoria <strong>[Nº]</strong></div>
+      <div>Plataformas <strong>[Meta Ads / Google Ads / LinkedIn Ads]</strong></div>
+      <div>Status <strong>[Versão inicial / Revisado]</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- =================== SUMÁRIO =================== -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Sumário</div>
+    <h2>O que este manual cobre</h2>
+    <div class="toc">
+      <ol>
+        <li><a href="#s1">Para que serve este manual</a></li>
+        <li><a href="#s2">Resumo executivo do cliente</a></li>
+        <li><a href="#s3">Pré-requisitos técnicos</a></li>
+        <li><a href="#s4">Estrutura de conta</a></li>
+        <li><a href="#s5">Rastreamento e mensuração</a></li>
+        <li><a href="#s6">Orçamento por fase</a></li>
+        <li><a href="#s7">Segmentação e públicos</a></li>
+        <li><a href="#s8">Alocação de verba</a></li>
+        <li><a href="#s9">Arquitetura de campanhas</a></li>
+        <li><a href="#s10">Estrutura de criativos e anúncios</a></li>
+        <li><a href="#s11">KPIs e metas</a></li>
+        <li><a href="#s12">Erros comuns a evitar</a></li>
+        <li><a href="#s13">Checklist de lançamento</a></li>
+        <li><a href="#s14">Cadência de otimização</a></li>
+        <li><a href="#s15">Glossário rápido</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 1. PARA QUE SERVE =================== -->
+<section id="s1">
+  <div class="wrap">
+    <div class="kicker">01</div>
+    <h2>Para que serve este manual</h2>
+    <p>Este manual existe para que qualquer pessoa — mesmo sem experiência prévia em mídia paga — consiga criar, lançar e otimizar as campanhas de <strong>[NOME DO CLIENTE]</strong> sem depender de conhecimento tácito.</p>
+    <p>Deve ser consultado sempre que alguém for:</p>
+    <div class="card-grid">
+      <div class="card"><h4>Criar campanha</h4><p>Nova campanha em Meta Ads ou Google Ads</p></div>
+      <div class="card"><h4>Definir orçamento</h4><p>Ou segmentação de público</p></div>
+      <div class="card"><h4>Escrever anúncios</h4><p>Ou selecionar criativos para veicular</p></div>
+      <div class="card"><h4>Otimizar</h4><p>Decidir se pausa, escala ou ajusta uma campanha</p></div>
+      <div class="card"><h4>Configurar rastreamento</h4><p>Pixel, CAPI, eventos de conversão</p></div>
+      <div class="card"><h4>Explicar ao cliente</h4><p>Por que a conta está estruturada assim</p></div>
+    </div>
+    <p style="margin-top:18px;"><a class="src-btn" href="https://docs.google.com/spreadsheets/d/1m22U6VI_MfVvlUi_4BzfcqQyf7HuS_5RiaCxA8-94tk/copy" target="_blank" rel="noopener">📊 Abrir planilha modelo (cópia)</a></p>
+    <p class="src-note">Link "fazer uma cópia" — exige login Google. Confirme o conteúdo antes de usar.</p>
+  </div>
+</section>
+
+<!-- =================== 2. RESUMO EXECUTIVO =================== -->
+<section id="s2">
+  <div class="wrap">
+    <div class="kicker">02</div>
+    <h2>Resumo executivo do cliente</h2>
+    <table>
+      <tr><th>Item</th><th>Dado</th></tr>
+      <tr><td>Empresa</td><td>[Nome]</td></tr>
+      <tr><td>Segmento</td><td>[Mercado e tipo de negócio]</td></tr>
+      <tr><td>Localização / abrangência</td><td>[Cidade, região, raio]</td></tr>
+      <tr><td>Ticket médio</td><td>[R$ X]</td></tr>
+      <tr><td>Margem sobre o ticket</td><td>[% ou R$]</td></tr>
+      <tr><td>Orçamento mensal de mídia</td><td>[R$ X/mês]</td></tr>
+      <tr><td>Meta de faturamento via tráfego pago</td><td>[R$ X/mês]</td></tr>
+      <tr><td><strong>CPA-alvo (calculado)</strong></td><td><strong>[R$ X]</strong></td></tr>
+      <tr><td>Ciclo de venda</td><td>[Curto / Médio / Longo]</td></tr>
+      <tr><td>Tipo de decisão</td><td>[B2C impulso / B2C considerado / B2B comitê]</td></tr>
+    </table>
+    <div class="callout"><strong>Resumo estratégico:</strong> [O que a empresa vende, por que tráfego pago é o canal certo agora e qual é a meta deste manual — 3 linhas.]</div>
+  </div>
+</section>
+
+<!-- =================== 3. PRÉ-REQUISITOS =================== -->
+<section id="s3">
+  <div class="wrap">
+    <div class="kicker">03</div>
+    <h2>Pré-requisitos técnicos <span style="color:var(--red)">(bloqueantes)</span></h2>
+    <p>Nenhuma campanha deve ser lançada sem os itens desta tabela resolvidos.</p>
+    <table>
+      <tr><th>Item</th><th>Status</th><th>Responsável</th></tr>
+      <tr><td>Business Manager / conta de anúncio Meta</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Conta Google Ads vinculada ao GA4</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Pixel Meta instalado</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Conversions API (CAPI)</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Tag Google Ads / GTM</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Evento de conversão testado</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Domínio verificado (Meta Business)</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Landing page publicada</td><td><span class="badge pend">⚠ Pendente</span></td><td>[Quem resolve]</td></tr>
+      <tr><td>Catálogo de produtos (Shopping)</td><td><span class="badge na">N/A</span></td><td>—</td></tr>
+    </table>
+    <div class="callout block"><strong>Regra:</strong> se houver qualquer item ⚠ Pendente, não avance para lançamento. Ver skill <code>/tracking-web-and-capi</code> para setup de pixel/CAPI/GTM.</div>
+  </div>
+</section>
+
+<!-- =================== 4. ESTRUTURA DE CONTA (DIAGRAMA) =================== -->
+<section id="s4">
+  <div class="wrap">
+    <div class="kicker">04</div>
+    <h2>Estrutura de conta</h2>
+
+    <div class="platform-block meta">
+    <div class="platform-badge"><span class="pdot"></span>Meta Ads — início</div>
+    <h3>Meta Ads</h3>
+    <figure>
+      <svg viewBox="0 0 720 210" width="100%" style="max-width:640px" xmlns="http://www.w3.org/2000/svg">
+        <rect x="270" y="8" width="180" height="42" rx="8" fill="#0d0d0d"/>
+        <text x="360" y="34" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial" font-weight="700">CONTA DE ANÚNCIOS</text>
+        <line x1="360" y1="50" x2="360" y2="72" stroke="#c9c9c9" stroke-width="2"/>
+        <rect x="220" y="72" width="280" height="42" rx="8" fill="#E4002B"/>
+        <text x="360" y="98" text-anchor="middle" fill="#fff" font-size="12.5" font-family="Arial" font-weight="700">CAMPANHA — Objetivo (Leads/Vendas)</text>
+        <line x1="360" y1="114" x2="200" y2="136" stroke="#c9c9c9" stroke-width="2"/>
+        <line x1="360" y1="114" x2="360" y2="136" stroke="#c9c9c9" stroke-width="2"/>
+        <line x1="360" y1="114" x2="520" y2="136" stroke="#c9c9c9" stroke-width="2"/>
+        <rect x="90" y="136" width="220" height="34" rx="7" fill="#f7f7f7" stroke="#c9c9c9"/>
+        <text x="200" y="157" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Arial">Conjunto — Público Frio</text>
+        <rect x="250" y="136" width="220" height="34" rx="7" fill="#f7f7f7" stroke="#c9c9c9" opacity="0"/>
+        <rect x="250" y="176" width="220" height="0" fill="none"/>
+        <rect x="410" y="136" width="220" height="34" rx="7" fill="#f7f7f7" stroke="#c9c9c9"/>
+        <text x="520" y="157" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Arial">Conjunto — Remarketing</text>
+        <line x1="200" y1="170" x2="200" y2="188" stroke="#c9c9c9" stroke-width="2"/>
+        <line x1="520" y1="170" x2="520" y2="188" stroke="#c9c9c9" stroke-width="2"/>
+        <rect x="130" y="188" width="140" height="20" rx="5" fill="#fff" stroke="#E4002B"/>
+        <text x="200" y="202" text-anchor="middle" fill="#E4002B" font-size="10" font-family="Arial" font-weight="700">Anúncios (3–5 variações)</text>
+        <rect x="450" y="188" width="140" height="20" rx="5" fill="#fff" stroke="#E4002B"/>
+        <text x="520" y="202" text-anchor="middle" fill="#E4002B" font-size="10" font-family="Arial" font-weight="700">Anúncios (2–3 variações)</text>
+      </svg>
+      <figcaption>Conta → Campanha (1 objetivo) → Conjunto (1 público) → Anúncios (variações de criativo)</figcaption>
+    </figure>
+    <p><strong>Modelo de otimização de orçamento:</strong> [CBO / ABO] — <em>[justificativa]</em></p>
+
+    <details class="guide-box" open>
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Criar a conta do zero</h4><div class="guide-meta">Ordem recomendada para quem nunca configurou uma conta de anúncios Meta · clique para abrir/fechar</div></span></summary>
+      <div class="guide-body">
+      <a class="src-btn" href="https://app.tango.us/app/workflow/01-00-Criando-e-configurando-sua-conta-de-an-ncios-no-Meta-do-Zero-7c4dd9989e84429589cf3d6ae2e917d4" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <figure class="ref-shot">
+        <img src="assets/meta-login-ferramentas-corporativas.png" alt="Tela de login das ferramentas corporativas da Meta">
+        <figcaption>Tela de acesso às ferramentas corporativas da Meta — é a primeira tela que aparece ao iniciar o passo 1</figcaption>
+      </figure>
+      <ol class="guide-steps">
+        <li>Criar (ou logar) uma conta pessoal Meta (Facebook/Instagram)</li>
+        <li>Criar o <strong>Business Manager (BM)</strong> vinculado à conta pessoal</li>
+        <li>No BM: Configurações → Contas → Contas de anúncios → Adicionar → Criar nova conta de anúncios</li>
+        <li>Nomear a conta e definir fuso horário e moeda — <strong>não é possível alterar depois</strong></li>
+        <li>Cadastrar forma de pagamento (cartão de crédito é o recomendado)</li>
+        <li>Criar a Página do Facebook da empresa (se ainda não existir)</li>
+        <li>Vincular a conta do Instagram à BM (Configurações → Contas do Instagram → Adicionar)</li>
+        <li>Vincular o WhatsApp Business à BM (Configurações → Contas do WhatsApp → Adicionar)</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Configurar o Pixel</h4><div class="guide-meta">Pré-requisito da Seção 5 (Rastreamento) — sem isso, nenhuma campanha mede conversão de verdade</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Negócios <i>›</i> Fontes de Dados <i>›</i> <span class="hl">Conjuntos de dados</span> <i>›</i> Adicionar</div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Configura--o-do-pixel-do-Meta-Ads-19c4251c538549c58833591e2551ec26" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <ol class="guide-steps">
+        <li>No BM: Fontes de Dados → Conjuntos de dados → Adicionar → escolher a conta de anúncios</li>
+        <li>Nomear o pixel e criar</li>
+        <li>Atribuir pessoas/permissões de acesso ao pixel</li>
+        <li>Conectar o pixel à conta de anúncios em "Outros ativos de negócios"</li>
+        <li>No Gerenciador de Eventos: ativar <strong>"Correspondência Automática de Site"</strong> e <strong>"Rastrear eventos automaticamente sem código"</strong></li>
+        <li>Gerar o código do pixel (instalação manual) e inserir na <code>&lt;head&gt;</code> do site — ou instalar via Google Tag Manager</li>
+      </ol>
+      <p style="margin-top:10px; font-size:12.5px; color:var(--gray);"><strong>3 tipos de evento que o pixel pode rastrear:</strong> evento padrão (inserido manualmente no código), evento personalizado (criado e nomeado por você no código) e conversão personalizada (criada a partir de uma URL, sem mexer em código).</p>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Padrão de nomenclatura</h3></span></summary>
+      <div class="topic-body">
+      <p>Nomenclatura ruim custa tempo toda vez que alguém precisa filtrar ou analisar a conta. Use um padrão fixo desde a primeira campanha:</p>
+      <table>
+        <tr><th>Nível</th><th>Formato</th><th>Exemplo</th></tr>
+        <tr><td>Campanha</td><td class="mono">[OBJETIVO] [PÚBLICO F/M/Q] [POSICIONAMENTO] [TAG] Descrição</td><td class="mono">[CONVERSÃO] [F] [STORIES] [DESAFIO] Vídeo convite</td></tr>
+        <tr><td>Conjunto de anúncios</td><td class="mono">(Nº) - [AUTO/MANUAL] - [Nome do público]</td><td class="mono">01 - [FEED] Envolvimento IG 14D</td></tr>
+        <tr><td>Anúncio</td><td class="mono">AD(nº) - Descrição identificável</td><td class="mono">AD01 - Convite de cabeça para baixo</td></tr>
+      </table>
+      <p style="font-size:13px;">F = Frio, M = Morno, Q = Quente (ver funil da seção 7). Uma campanha com 5 conjuntos de anúncios e 6 anúncios em cada é referida como campanha "1-5-6".</p>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>CBO vs. ABO — onde o orçamento é decidido</h3></span></summary>
+      <div class="topic-body">
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Conjunto de anúncios — Orçamento</div>
+        <div class="ui-mock-body">
+          <div class="toggle-row"><span>Orçamento no conjunto de anúncios (ABO)</span><span class="sw"></span></div>
+          <div class="toggle-row"><span>Orçamento Advantage — CBO <i style="color:#1877f2; font-style:normal; font-weight:700;">(padrão)</i></span><span class="sw on"></span></div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de orçamento — sem dado de conta real</figcaption>
+      </div>
+      <table>
+        <tr><th></th><th>CBO (nível de campanha)</th><th>ABO (nível de conjunto)</th></tr>
+        <tr><td>Quem decide o gasto por público</td><td>A Meta decide, pode até zerar um público</td><td>Você decide, valor fixo por público</td></tr>
+        <tr><td>Controle</td><td>Menor controle individual</td><td>Maior controle individual</td></tr>
+        <tr><td>Trabalho de otimização</td><td>Menor</td><td>Maior</td></tr>
+        <tr><td>Quando usar</td><td>Padrão — na maioria dos casos, resultado melhor</td><td>Para comparar públicos em igualdade de condições (mesma verba nos dois lados)</td></tr>
+      </table>
+      <p style="font-size:13px;"><strong>Orçamento Diário</strong> (quanto gastar em 24h) é a opção padrão. <strong>Orçamento Total/vitalício</strong> (quanto gastar num período definido) só faz sentido para negócio físico com horário de funcionamento restrito.</p>
+
+      <div class="callout">
+        <strong>O que são Campanhas Advantage:</strong> versão com automações ativadas — a Meta decide orçamento, público e/ou posicionamento por você. Tem 4 recursos independentes: <strong>Campanha Advantage</strong> (todos ativados), <strong>Orçamento Advantage</strong> (= CBO), <strong>Público Advantage</strong> (segmentação automática) e <strong>Posicionamento Advantage</strong>. Regra prática: teste com Advantage ativado primeiro — funciona bem na maioria dos casos — e desative recurso a recurso apenas onde os dados mostrarem necessidade. Advantage não é a estratégia; faz parte da estratégia.
+      </div>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Posicionamentos — onde o anúncio aparece</h3></span></summary>
+      <div class="topic-body">
+      <p>Além do "para quem" (público), todo conjunto de anúncios decide o "onde": em qual tela/formato o anúncio é exibido.</p>
+      <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Escolher o posicionamento</h4><div class="guide-meta">Etapa "Posicionamentos" na criação do conjunto de anúncios</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Conjunto de anúncios — Posicionamentos</div>
+        <div class="ui-mock-body">
+          <div class="toggle-row"><span>Posicionamentos Advantage+ <i style="color:#1877f2; font-style:normal; font-weight:700;">(recomendado)</i></span><span class="sw on"></span></div>
+          <div class="toggle-row"><span>Posicionamentos manuais</span><span class="sw"></span></div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de posicionamento — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Deixe marcado <strong>"Posicionamentos Advantage+"</strong> (automático) como padrão — na maioria dos casos entrega mais resultado do que a escolha manual</li>
+        <li>Só troque para <strong>"Posicionamentos manuais"</strong> se: um posicionamento específico já provou não gerar resultado, você quer isolar orçamento para testar um posicionamento sozinho, ou vai criar uma arte específica para um formato (ex: só Stories)</li>
+        <li>No manual, escolha plataforma (Facebook/Instagram/Messenger/Audience Network) e depois o posicionamento dentro dela (feed, stories, reels, in-stream)</li>
+        <li>Em "Mostrar mais opções", é possível ainda filtrar por tipo de sistema operacional e por conexão Wi-Fi — recursos pouco usados, mas disponíveis</li>
+        <li>Sempre que possível, forneça criativo nos formatos vertical (Stories/Reels) e quadrado/horizontal (Feed) — isso libera mais opções de formato e faz o posicionamento automático performar ainda melhor</li>
+      </ol>
+      </div>
+    </details>
+      </div>
+    </details>
+
+    <div class="screenshot-slot">
+      <span class="icon">📸</span>
+      <strong>Screenshot real pendente</strong><br>
+      Capturar na conta do cliente: tela de criação de campanha (Meta Ads Manager) mostrando a estrutura acima já aplicada. Substituir este bloco por <code>&lt;img src="assets/screenshots/meta-estrutura-conta.png"&gt;</code> assim que houver acesso à conta.
+    </div>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Meta Ads —</p>
+    </div>
+
+    <div class="platform-block google">
+    <div class="platform-badge"><span class="pdot"></span>Google Ads — início</div>
+    <h3>Google Ads</h3>
+    <figure>
+      <svg viewBox="0 0 720 190" width="100%" style="max-width:640px" xmlns="http://www.w3.org/2000/svg">
+        <rect x="290" y="8" width="140" height="40" rx="8" fill="#0d0d0d"/>
+        <text x="360" y="33" text-anchor="middle" fill="#fff" font-size="13" font-family="Arial" font-weight="700">CONTA</text>
+        <line x1="360" y1="48" x2="360" y2="70" stroke="#c9c9c9" stroke-width="2"/>
+        <rect x="220" y="70" width="280" height="38" rx="8" fill="#E4002B"/>
+        <text x="360" y="94" text-anchor="middle" fill="#fff" font-size="12" font-family="Arial" font-weight="700">CAMPANHA — Rede de Pesquisa</text>
+        <line x1="360" y1="108" x2="210" y2="128" stroke="#c9c9c9" stroke-width="2"/>
+        <line x1="360" y1="108" x2="510" y2="128" stroke="#c9c9c9" stroke-width="2"/>
+        <rect x="100" y="128" width="220" height="34" rx="7" fill="#f7f7f7" stroke="#c9c9c9"/>
+        <text x="210" y="149" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Arial">Grupo — Dor 1 (ex: AVCB urgente)</text>
+        <rect x="400" y="128" width="220" height="34" rx="7" fill="#f7f7f7" stroke="#c9c9c9"/>
+        <text x="510" y="149" text-anchor="middle" fill="#1a1a1a" font-size="11" font-family="Arial">Grupo — Dor 2 (ex: Manutenção)</text>
+        <text x="210" y="180" text-anchor="middle" fill="var(--gray)" font-size="10" font-family="Arial">RSA + palavras-chave</text>
+        <text x="510" y="180" text-anchor="middle" fill="var(--gray)" font-size="10" font-family="Arial">RSA + palavras-chave</text>
+      </svg>
+      <figcaption>1 grupo de anúncios por dor/tema — nunca misturar intenções diferentes no mesmo grupo</figcaption>
+    </figure>
+
+    <details class="guide-box" open>
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Criar a conta do zero</h4><div class="guide-meta">Google Ads assusta quem só conhece Meta, mas a lógica de conta é parecida · telas reais do próprio fluxo</div></span></summary>
+      <div class="guide-body">
+      <a class="src-btn" href="https://app.tango.us/app/workflow/0c142089-a49f-4300-932f-10b85d673e2c" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/criar_conta_01_empresa.png" alt="Tela 'Fale mais sobre sua empresa' do Google Ads">
+        <figcaption>Etapa "Adicionar informações comerciais" — nome da empresa e para onde a pessoa vai depois de clicar no anúncio (site, perfil da empresa, telefone ou app)</figcaption>
+      </figure>
+      <ol class="guide-steps">
+        <li>Pesquisar "Google Ads" no Google e abrir o link oficial (ou acessar <code>ads.google.com</code> direto)</li>
+        <li>Clicar em "Começar agora" e logar com uma Conta do Google</li>
+        <li>Informar o nome da empresa e o destino do clique</li>
+      </ol>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/criar_conta_02_vincular_contas.png" alt="Tela de vincular contas no Google Ads">
+        <figcaption>Vincular contas (opcional nesta etapa) — Perfil da Empresa no Google, canal do YouTube, app e telefone; pode ser feito depois</figcaption>
+      </figure>
+      <ol class="guide-steps" start="4">
+        <li>Vincular o Perfil da Empresa no Google, se já existir — acelera o preenchimento automático</li>
+        <li>Escolher entre "Criar sua campanha" (fluxo guiado) ou "Configurar apenas a conta" (pular a criação da primeira campanha)</li>
+      </ol>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/criar_conta_03_carregando_metas.png" alt="Barra lateral com as etapas de criação de campanha carregando">
+        <figcaption>Sequência real do fluxo guiado: Escolher meta → Adicionar temas de pesquisa → Criar anúncios → Definir estratégia de lances → Definir orçamento</figcaption>
+      </figure>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/criar_conta_04_config_conta.png" alt="Tela de confirmar configurações da conta: país, fuso horário e moeda">
+        <figcaption>País de faturamento, fuso horário e unidade monetária — <strong>não dá para alterar depois</strong>, igual no Meta Ads</figcaption>
+      </figure>
+      <ol class="guide-steps" start="6">
+        <li>Confirmar país de faturamento, fuso horário e moeda</li>
+        <li>Revisar oferta de crédito para novo anunciante (se houver) e cadastrar a forma de pagamento</li>
+        <li>Enviar — a conta é criada na hora</li>
+      </ol>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/criar_conta_05_conta_criada.png" alt="Tela 'Sua conta foi criada' do Google Ads">
+        <figcaption>Conta criada — mas os anúncios só começam a rodar depois da "Verificação do anunciante"</figcaption>
+      </figure>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/criar_conta_06_verificacao_anunciante.png" alt="Tela de verificação do anunciante do Google Ads">
+        <figcaption>Verificação do anunciante — obrigatória para veicular anúncios; o Google exige transparência sobre quem está por trás de cada anúncio</figcaption>
+      </figure>
+      <ol class="guide-steps" start="9">
+        <li>Responder se a organização é uma agência de publicidade (gerencia contas de terceiros) ou anuncia só a própria marca</li>
+        <li>Se for agência: escolher entre verificar "Minha agência" ou "Um cliente" e enviar o comprovante pedido</li>
+        <li>Salvar e continuar — a verificação pode levar alguns dias</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Conceder acesso a alguém (agência, freelancer, sócio)</h4><div class="guide-meta">Adm. › Acesso e segurança — equivalente a "Membros da Business Manager" no Meta</div></span></summary>
+      <div class="guide-body">
+      <a class="src-btn" href="https://app.tango.us/app/workflow/7ee10e90-803e-4cc1-865b-7a6ee66bc5d4" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-path">Adm. <i>›</i> Acesso e segurança <i>›</i> Usuários <i>›</i> <span class="hl">Adicionar</span></div>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/acesso_02_configuracoes_conta.png" alt="Tela de Configurações da conta com o menu Acesso e segurança">
+        <figcaption>Menu "Adm." (engrenagem) → "Acesso e segurança"</figcaption>
+      </figure>
+      <ol class="guide-steps">
+        <li>No menu "Adm.", abrir "Acesso e segurança" → aba "Usuários"</li>
+        <li>Clicar em "Adicionar" e digitar o e-mail da pessoa (precisa ter uma Conta do Google)</li>
+      </ol>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/acesso_03_convite_permissoes.png" alt="Tela de convite com os níveis de acesso do Google Ads">
+        <figcaption>Os 5 níveis de acesso do Google Ads e a comparação detalhada do que cada um libera</figcaption>
+      </figure>
+      <ol class="guide-steps" start="3">
+        <li>Escolher o nível de acesso — ver tabela abaixo</li>
+        <li>Enviar convite; a pessoa recebe um e-mail e precisa confirmar</li>
+      </ol>
+      <table>
+        <tr><th>Nível</th><th>O que libera</th><th>Quando usar</th></tr>
+        <tr><td>Somente e-mail</td><td>Só recebe relatórios por e-mail, não entra na conta</td><td>Sócio/cliente que só quer ser avisado</td></tr>
+        <tr><td>Faturamento</td><td>Ver e editar informações de pagamento</td><td>Financeiro/contabilidade</td></tr>
+        <tr><td>Somente leitura</td><td>Ver campanhas e relatórios, sem editar</td><td>Cliente acompanhando sem mexer</td></tr>
+        <tr><td>Padrão</td><td>Editar campanhas e relatórios, sem mexer em usuários</td><td>Quem opera a conta no dia a dia (ex: agência)</td></tr>
+        <tr><td>Adm.</td><td>Acesso total, incluindo adicionar/remover pessoas</td><td>Dono da conta</td></tr>
+      </table>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/acesso_04_verificar_identidade.png" alt="Tela de verificação de identidade em duas etapas do Google">
+        <figcaption>Confirmação em duas etapas — aparece sempre que uma ação sensível é feita na conta (novo usuário, mudança de pagamento etc.); normal, não é erro</figcaption>
+      </figure>
+      </div>
+    </details>
+
+    <div class="callout">
+      <strong>Conexões que valem a pena fazer:</strong> YouTube (crie um canal mesmo sem publicar vídeo — é por lá que sobem os vídeos usados em anúncio, pode ser "não listado"), Google Analytics (entender o que acontece no site), Google Merchant Center (obrigatório para e-commerce) e Google Meu Negócio/Business Profile (essencial para negócio físico).
+    </div>
+
+    <div class="screenshot-slot">
+      <span class="icon">📸</span>
+      <strong>Screenshot real pendente</strong><br>
+      Capturar na conta do cliente: tela de criação de campanha (Google Ads) mostrando a estrutura acima já aplicada. Substituir este bloco por <code>&lt;img src="assets/screenshots/google-estrutura-conta.png"&gt;</code> assim que houver acesso à conta.
+    </div>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Google Ads —</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 5. RASTREAMENTO =================== -->
+<section id="s5">
+  <div class="wrap">
+    <div class="kicker">05</div>
+    <h2>Rastreamento e mensuração</h2>
+    <table>
+      <tr><th>Evento</th><th>Onde dispara</th><th>Recebe em</th><th>Como validar</th></tr>
+      <tr><td>PageView</td><td>Toda página</td><td>Meta Pixel + GA4</td><td>Meta Pixel Helper</td></tr>
+      <tr><td>Lead/Contato</td><td>Envio de formulário</td><td>Meta CAPI + Google Ads</td><td>Eventos de teste</td></tr>
+      <tr><td>Contato via WhatsApp</td><td>Clique no botão</td><td>Meta Pixel + GTM</td><td>Eventos de teste</td></tr>
+      <tr><td>Compra (se e-commerce)</td><td>Página de obrigado</td><td>Meta CAPI + Google Ads + GA4</td><td>Valor/moeda batendo com o pedido</td></tr>
+    </table>
+    <h3>Padrão de UTM</h3>
+    <p class="mono">utm_source=[meta/google]&amp;utm_medium=cpc&amp;utm_campaign=[nome-campanha]&amp;utm_content=[nome-anuncio]</p>
+    <p><strong>Janela de atribuição:</strong> [1 dia clique / 7 dias clique / 1 dia visualização]</p>
+
+    <h3>Tag do Google Ads (equivalente ao Pixel)</h3>
+    <p style="font-size:13px;">A <strong>tag do Google Ads</strong> é o "pixel" do Google — todo mundo já chamou isso de nome diferente (pixel, conjunto de dados, API de conversões) e vai continuar mudando de nome no futuro. O que importa é a lógica, que tem duas peças:</p>
+    <table>
+      <tr><th></th><th>Tag do Google Ads</th><th>Ação de conversão</th></tr>
+      <tr><td>Quantas por conta</td><td>Uma só</td><td>Uma por evento que você quer medir</td></tr>
+      <tr><td>Onde instalar</td><td>Em todas as páginas do site</td><td>Só na página do evento (ex: página de "obrigado"/confirmação)</td></tr>
+      <tr><td>Equivale a</td><td>O pixel/base do Meta</td><td>Um evento do Meta (Lead, Comprar, etc.)</td></tr>
+    </table>
+    <p style="font-size:13px;"><strong>3 formas de instalar</strong> (depois de criar a ação de conversão no Google Ads): via Google Tag Manager (recomendado — gerencia tags/eventos sem mexer em código), manual (copiar o snippet e colar no <code>&lt;head&gt;</code> ou <code>&lt;body&gt;</code> da página) ou enviar o snippet por e-mail para quem cuida do site.</p>
+    <p style="font-size:12.5px; color:var(--gray);">No código, a tag aparece como <code class="mono">AW-XXXXXXXXXX</code> e a ação de conversão como <code class="mono">AW-XXXXXXXXXX/YYYYYYYYYYY</code> — não precisa decorar, só saber identificar os dois IDs ao configurar.</p>
+    <div class="callout"><strong>Por que a tag importa:</strong> ela (1) informa ao Google Ads o que está vendendo e o que não está, (2) treina o algoritmo de lances automáticos a reconhecer quem tem mais chance de converter, e (3) permite criar públicos personalizados a partir do comportamento real no site (quem visitou, quem iniciou checkout etc. — ver seção 7).</p>
+  </div>
+</section>
+
+<!-- =================== 6. ORÇAMENTO POR FASE (TIMELINE) =================== -->
+<section id="s6">
+  <div class="wrap">
+    <div class="kicker">06</div>
+    <h2>Orçamento por fase</h2>
+    <figure>
+      <svg viewBox="0 0 760 130" width="100%" style="max-width:700px" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="65" x2="720" y2="65" stroke="#e6e6e6" stroke-width="4"/>
+        <circle cx="120" cy="65" r="9" fill="#0d0d0d"/>
+        <circle cx="390" cy="65" r="9" fill="#E4002B"/>
+        <circle cx="660" cy="65" r="9" fill="#a5001f"/>
+        <text x="120" y="40" text-anchor="middle" font-size="13" font-weight="700" font-family="Arial" fill="#0d0d0d">TESTE</text>
+        <text x="120" y="90" text-anchor="middle" font-size="11" font-family="Arial" fill="#5c5c5c">[X dias] · R$[X]/dia</text>
+        <text x="390" y="40" text-anchor="middle" font-size="13" font-weight="700" font-family="Arial" fill="#E4002B">OTIMIZAÇÃO</text>
+        <text x="390" y="90" text-anchor="middle" font-size="11" font-family="Arial" fill="#5c5c5c">[X dias] · R$[X]/dia</text>
+        <text x="660" y="40" text-anchor="middle" font-size="13" font-weight="700" font-family="Arial" fill="#a5001f">ESCALA</text>
+        <text x="660" y="90" text-anchor="middle" font-size="11" font-family="Arial" fill="#5c5c5c">Contínuo · +15–20%/ciclo</text>
+      </svg>
+      <figcaption>Cada fase só avança quando o critério de saída da fase anterior é atingido — nunca por calendário fixo</figcaption>
+    </figure>
+    <table>
+      <tr><th>Fase</th><th>Objetivo</th><th>Critério de avanço</th></tr>
+      <tr><td>Teste</td><td>Validar públicos, criativos e mensagens</td><td>[Nº mínimo de conversões para decidir]</td></tr>
+      <tr><td>Otimização</td><td>Concentrar verba no que performou</td><td>[CPA dentro da meta por X dias seguidos]</td></tr>
+      <tr><td>Escala</td><td>Crescer volume mantendo CPA-alvo</td><td>[CPA estável a cada incremento de 15–20%]</td></tr>
+    </table>
+    <div class="callout"><strong>Regra de ouro:</strong> nunca aumentar orçamento em mais de 20% de uma vez — isso reinicia o aprendizado do algoritmo.</div>
+  </div>
+</section>
+
+<!-- =================== 7. SEGMENTAÇÃO (FUNIL) =================== -->
+<section id="s7">
+  <div class="wrap">
+    <div class="kicker">07</div>
+    <h2>Segmentação e públicos</h2>
+    <p>Baseado no ICP e nas personas do Manual de Copy — <a href="#">[link/seção do Manual de Copy]</a>.</p>
+    <figure>
+      <svg viewBox="0 0 480 220" width="100%" style="max-width:380px" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,10 460,10 360,80 120,80" fill="#0d0d0d"/>
+        <text x="240" y="50" text-anchor="middle" fill="#fff" font-size="13" font-weight="700" font-family="Arial">FRIO — Interesse / Lookalike</text>
+        <polygon points="120,84 360,84 300,150 180,150" fill="#E4002B"/>
+        <text x="240" y="120" text-anchor="middle" fill="#fff" font-size="12.5" font-weight="700" font-family="Arial">MORNO — Engajamento</text>
+        <polygon points="180,154 300,154 270,214 210,214" fill="#a5001f"/>
+        <text x="240" y="188" text-anchor="middle" fill="#fff" font-size="11.5" font-weight="700" font-family="Arial">QUENTE</text>
+        <text x="240" y="203" text-anchor="middle" fill="#fff" font-size="9.5" font-family="Arial">Remarketing</text>
+      </svg>
+      <figcaption>Topo (alcance) → meio (aquecimento) → fundo (conversão/remarketing)</figcaption>
+    </figure>
+    <table>
+      <tr><th>Tipo</th><th>Definição</th><th>Objetivo no funil</th></tr>
+      <tr><td>Frio (interesse)</td><td>[Interesses/demografia do ICP]</td><td>Topo — geração de demanda</td></tr>
+      <tr><td>Frio (lookalike)</td><td>[Lookalike 1–3% da base de clientes]</td><td>Topo — escala</td></tr>
+      <tr><td>Morno</td><td>[Engajou com perfil/vídeo nos últimos X dias]</td><td>Meio — aquecimento</td></tr>
+      <tr><td>Quente (remarketing)</td><td>[Visitou site/LP sem converter]</td><td>Fundo — conversão</td></tr>
+    </table>
+    <div class="platform-block meta">
+    <div class="platform-badge"><span class="pdot"></span>Meta Ads — início</div>
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Como escolher o público-alvo (Meta Ads)</h3></span></summary>
+      <div class="topic-body">
+      <div class="card-grid">
+        <div class="card"><h4>Automáticos</h4><p>Com ou sem sugestão — a Meta escolhe livre ou direcionada por você</p></div>
+        <div class="card"><h4>Personalizados</h4><p>Pessoas que já tiveram contato com você/seus anúncios/conteúdos</p></div>
+        <div class="card"><h4>Semelhantes</h4><p>Parecidos com seu público personalizado — escolha o mais qualificado como base</p></div>
+        <div class="card"><h4>Demográficos</h4><p>Localização, idade, gênero, idioma</p></div>
+        <div class="card"><h4>Direcionamento detalhado</h4><p>Interesses/comportamentos específicos para a campanha</p></div>
+      </div>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>A lógica do "E" e do "OU" na segmentação</h3></span></summary>
+      <div class="topic-body">
+      <p>Combinar critérios com <strong>E</strong> (limitador) restringe a interseção; combinar com <strong>OU</strong> (adicionador) soma os grupos. Exemplo com público que "empreende" e/ou "tem interesse em gatos":</p>
+      <table>
+        <tr><th>Operador</th><th>Quem entra no público</th><th>Resultado</th></tr>
+        <tr><td class="mono">empreende E gatos</td><td>Só quem tem as duas características ao mesmo tempo</td><td>Público mais estreito e qualificado</td></tr>
+        <tr><td class="mono">empreende OU gatos</td><td>Quem tem qualquer uma das duas características</td><td>Público mais amplo</td></tr>
+      </table>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Formas de segmentar além de idade/interesse</h3></span></summary>
+      <div class="topic-body">
+      <ul class="checklist">
+        <li>Controle de público-alvo — limita para quem a Meta pode anunciar (nível de conjunto ou de conta)</li>
+        <li>Através do pixel/conjunto de dados — a própria base de eventos do site vira público. Pixel só qualifica se ele estiver "aquecido" (anunciando de forma constante, com eventos corretos)</li>
+        <li>Interações passadas com os anúncios — a Meta expande para pessoas parecidas com quem já interagiu</li>
+        <li>Através do anúncio — o texto/imagem escolhe quem vai parar de rolar e prestar atenção; é o filtro mais forte de todos</li>
+      </ul>
+      <div class="callout"><strong>Regra:</strong> o anúncio deve funcionar como filtro, não como ímã — não é para atrair todo mundo, é para atrair só quem converte. Nenhuma dessas formas substitui as outras; uma boa operação usa todas ao mesmo tempo.</div>
+      </div>
+    </details>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Meta Ads —</p>
+    </div>
+
+    <div class="platform-block google">
+    <div class="platform-badge"><span class="pdot"></span>Google Ads — início</div>
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Como segmentar público no Google Ads</h3></span></summary>
+      <div class="topic-body">
+      <p>O Google tem 4 formas principais de segmentar — não precisa dominar todas de cara, mas precisa saber que existem:</p>
+      <table>
+        <tr><th>Tipo</th><th>Foco</th><th>Controle</th><th>Quando usar</th></tr>
+        <tr><td>Público-alvo</td><td>A pessoa</td><td>Alto</td><td>Quando você já conhece bem o seu ICP</td></tr>
+        <tr><td>Conteúdo</td><td>Onde o anúncio aparece</td><td>Médio</td><td>Quando você conhece os canais/sites certos</td></tr>
+        <tr><td>Segmentação otimizada</td><td>O Google escolhe por você</td><td>Baixo</td><td>Testes — evite como padrão</td></tr>
+        <tr><td>Indicadores de público-alvo</td><td>Você sugere, o Google decide</td><td>Baixo</td><td>Campanhas Performance Max</td></tr>
+      </table>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Criar um público-alvo</h4><div class="guide-meta">Ferramentas › Gerenciador de públicos-alvo — tela real do Google Ads</div></span></summary>
+      <div class="guide-body">
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Segmenta--es-no-Google-Ads---P-blicos-alvo-6a7ea70ef2ed4abeae2b08430366633f" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-path">Ferramentas <i>›</i> Biblioteca compartilhada <i>›</i> Gerenciador de públicos-alvo <i>›</i> <span class="hl">Novo público-alvo</span></div>
+      <p style="font-size:13px; margin:0 0 12px;">Dentro de "Público-alvo" existem 4 subtipos que podem ser combinados no mesmo público:</p>
+      <ol class="guide-steps">
+        <li><strong>Meus dados (remarketing):</strong> quem já visitou o site, usou o app, interagiu com o canal do YouTube ou está numa lista de clientes (nome + e-mail)</li>
+        <li><strong>Segmentos personalizados:</strong> você ensina o público ideal com base em intenção de compra (palavras-chave), termos pesquisados, sites que a pessoa acessa (inclusive de concorrentes), canais do YouTube ou apps que tem no celular</li>
+        <li><strong>Públicos prontos:</strong> listas do próprio Google — "No mercado" (intenção de compra ativa), eventos importantes (casamento, mudança, formatura), demografia detalhada (filhos, escolaridade, renda) e afinidade (hábitos, estilo de vida)</li>
+        <li><strong>Demografia clássica:</strong> idade, gênero, localização e renda familiar estimada — básico, mas indispensável em toda campanha</li>
+      </ol>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/publico_01_novo_publico_alvo.png" alt="Tela 'Novo público-alvo' do Google Ads">
+        <figcaption>Tela real "Novo público-alvo" — os mesmos 3 blocos combináveis do passo a passo acima (Segmentos personalizados, Seus dados, Interesses e informações demográficas)</figcaption>
+      </figure>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/publico_02_novo_segmento_personalizado.png" alt="Tela 'Novo segmento personalizado' do Google Ads">
+        <figcaption>Criando um segmento personalizado: por interesses/intenção de compra ou por termos que a pessoa pesquisou no Google</figcaption>
+      </figure>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/publico_03_info_demografica.png" alt="Tela de informações demográficas do Google Ads">
+        <figcaption>Demografia clássica + informações adicionais (status parental, faixa de renda familiar) — em alguns países da América Latina esse dado vem menos preciso por questões legais</figcaption>
+      </figure>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Trazer público do Google Analytics (GA4)</h4><div class="guide-meta">Base de remarketing mais rica que o "Meus dados" nativo do Google Ads</div></span></summary>
+      <div class="guide-body">
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Segmenta--es-no-Google-Ads---Google-Analytics-63f3a0d975a647a5bf1c91b4d6124a4f" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-path">Gerenciador de públicos-alvo <i>›</i> Segmentos dos seus dados <i>›</i> <span class="hl">Google Analytics (GA4)</span></div>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/ga4_01_selecionar_propriedade.png" alt="Tela de selecionar propriedade do Google Analytics">
+        <figcaption>Selecionar a propriedade do GA4 vinculada — pré-requisito: GA4 já instalado e vinculado à conta do Google Ads</figcaption>
+      </figure>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/ga4_02_criar_novo_publico.png" alt="Tela de criar novo público com templates prontos do Google Analytics">
+        <figcaption>Templates prontos do GA4: Usuários ativos recentemente, Usuários que não realizaram compra, Compradores, Usuários/Compradores inativos por 7 dias</figcaption>
+      </figure>
+      <ol class="guide-steps">
+        <li>Escolher um template pronto (mais rápido) ou "Criar um público-alvo personalizado" (começar do zero)</li>
+        <li>Ajustar as condições de inclusão — eventos como <code class="mono">purchase</code>, <code class="mono">in_app_purchase</code> ou <code class="mono">ecommerce_purchase</code></li>
+        <li>Definir a duração da adesão (padrão: 30 dias)</li>
+        <li>Salvar — o público leva algumas horas para popular antes de poder ser usado em campanha</li>
+      </ol>
+      <figure class="ref-shot">
+        <img src="assets/google-ads-real/ga4_03_compradores_condicoes.png" alt="Tela de configuração do público Compradores com condições de evento">
+        <figcaption>Público "Compradores" pronto — condições de evento já preenchidas e diagrama de inclusão/exclusão à direita</figcaption>
+      </figure>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Como escolher as palavras-chave (Google Ads)</h3></span></summary>
+      <div class="topic-body">
+      <p>No Google Ads não existe "público" da mesma forma que no Meta — a segmentação primária é por <strong>intenção de busca</strong>, expressa em palavras-chave. Agrupe por camada de intenção, uma dor/tema por grupo de anúncios (mesma regra da seção 4):</p>
+      <table>
+        <tr><th>Camada</th><th>Palavras-chave</th><th>Tipo de correspondência</th><th>Intenção</th></tr>
+        <tr><td>[Dor 1]</td><td>[termo 1], [termo 2]</td><td>[Frase / Exata]</td><td>Alta — pronto para comprar</td></tr>
+        <tr><td>[Dor 2]</td><td>[termo 1], [termo 2]</td><td>[Frase / Exata]</td><td>Média — pesquisando solução</td></tr>
+      </table>
+      <p style="font-size:13px;"><strong>Tipos de correspondência:</strong> ampla (mais volume, menos controle — usar com cautela e lances automáticos), frase (equilíbrio, a expressão precisa aparecer na busca) e exata (mais controle, menor volume, maior intenção). Comece por frase/exata e só teste ampla depois de ter dados de conversão.</p>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Palavras-chave negativas globais</h3></span></summary>
+      <div class="topic-body">
+      <p class="mono">[concurso], [grátis], [curso], [como fazer eu mesmo], [emprego/vaga]</p>
+      <p style="font-size:13px;">Aplicar em todas as campanhas de Pesquisa — evita gastar verba com buscas sem intenção de compra. Revisar semanalmente o relatório de "Termos de pesquisa" para achar novas negativas.</p>
+      </div>
+    </details>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Google Ads —</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 8. ALOCAÇÃO DE VERBA =================== -->
+<section id="s8">
+  <div class="wrap">
+    <div class="kicker">08</div>
+    <h2>Fórmula de alocação de verba</h2>
+    <table>
+      <tr><th>Plataforma / Campanha</th><th>% do orçamento</th><th>Justificativa</th></tr>
+      <tr><td>Google Ads — Rede de Pesquisa</td><td>[X%]</td><td>Captura de demanda ativa</td></tr>
+      <tr><td>Meta Ads — Prospecção</td><td>[X%]</td><td>Geração de demanda</td></tr>
+      <tr><td>Meta Ads — Remarketing</td><td>[X%]</td><td>Menor volume, maior conversão</td></tr>
+      <tr><td>LinkedIn Ads (se B2B)</td><td>[X%]</td><td>Prospecção por cargo/setor</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- =================== 9. ARQUITETURA DE CAMPANHAS =================== -->
+<section id="s9">
+  <div class="wrap">
+    <div class="kicker">09</div>
+    <h2>Arquitetura de campanhas</h2>
+
+    <div class="platform-block meta">
+    <div class="platform-badge"><span class="pdot"></span>Meta Ads — início</div>
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Como escolher o objetivo certo</h3></span></summary>
+      <div class="topic-body">
+      <p>O objetivo normalmente é óbvio (busca por vendas → objetivo de vendas), mas dentro de cada objetivo existem metas de otimização — micro-objetivos que mudam como o algoritmo entrega o anúncio:</p>
+      <table>
+        <tr><th>Objetivo</th><th>Para que serve</th><th>Metas de otimização dentro dele</th></tr>
+        <tr><td>Reconhecimento</td><td>"Martelar" uma ideia, público pequeno</td><td>Alcance (pessoas únicas) · Impressão (frequência) · Incrementalidade</td></tr>
+        <tr><td>Tráfego</td><td>Enviar volume para um destino específico</td><td>Clique no link (foco em clique) · Visualizações de página (foco no carregamento)</td></tr>
+        <tr><td>Engajamento</td><td>Gerar interação com posts/vídeos/mensagens</td><td>Visualização de vídeo · Aplicativos de mensagens (WhatsApp/Direct/Messenger) · Interação com a publicação</td></tr>
+        <tr><td>Cadastro</td><td>Coletar dados de contato</td><td>Cadastro no site (mais comprometimento) · Formulário instantâneo (preenchimento automático, mais volume)</td></tr>
+        <tr><td>Venda</td><td>Vender</td><td>Site (requer pixel+API de conversões) · Catálogo (dinâmico, ideal para e-commerce)</td></tr>
+        <tr><td>Botão turbinar</td><td>Crescer o perfil</td><td>Visitas ao perfil · Seguidores</td></tr>
+      </table>
+      <p style="font-size:13px;"><strong>Cadastro no site vs. Formulário instantâneo:</strong> no site você qualifica melhor (a pessoa sai do fluxo automático da Meta para preencher); no formulário instantâneo o preenchimento é automático e gera mais volume, com leads às vezes menos qualificados. Testar os dois é sempre válido.</p>
+
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Nova campanha — Escolha o objetivo</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn">Reconhecimento</div>
+            <div class="obj-btn">Tráfego</div>
+            <div class="obj-btn sel">Engajamento</div>
+            <div class="obj-btn">Cadastro</div>
+            <div class="obj-btn">Venda</div>
+            <div class="obj-btn">Botão turbinar</div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de seleção de objetivo — sem dado de conta real</figcaption>
+      </div>
+      </div>
+    </details>
+
+    <h3>Cardápio de campanhas do Meta Ads — passo a passo de cada tipo</h3>
+    <p>Antes de criar a campanha, escolha o tipo certo para o objetivo. Clique em cada card abaixo para abrir o roteiro literal de cliques dentro do Gerenciador de Anúncios para montar aquele tipo de campanha do zero.</p>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Campanha de Seguidores</h4><div class="guide-meta">Objetivo: Engajamento · só funciona com posicionamento Instagram</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Engajamento <i>›</i> <span class="hl">Seguidores</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Campanha-de-Seguidores-ba015e15949342c3937bfe39112b2787" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Engajamento — Meta de otimização</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn">Interação com a publicação</div>
+            <div class="obj-btn">Visualizações de vídeo</div>
+            <div class="obj-btn">Aplicativos de mensagens</div>
+            <div class="obj-btn sel">Seguidores</div>
+          </div>
+          <div class="toggle-row" style="margin-top:10px;"><span>Posicionamento manual — só Instagram</span><span class="sw on"></span></div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de meta de otimização — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Engajamento</strong> → meta de otimização <strong>"Seguidores"</strong></li>
+        <li>Criar o público: semelhante (lookalike de quem já segue/engaja) ou por interesse relacionado ao nicho</li>
+        <li>Na aba de exclusões do público, excluir quem já segue o perfil — evita pagar por quem já converteu</li>
+        <li>Em Posicionamentos, trocar para manual e deixar marcado <strong>só Instagram</strong> (remover Facebook e Audience Network)</li>
+        <li>Escolher uma publicação que já esteja no ar <strong>no Instagram</strong> — post feito só no Facebook não funciona aqui</li>
+        <li>Aplicar o público criado ao conjunto de anúncios e revisar orçamento</li>
+        <li>Publicar e acompanhar a métrica de custo por seguidor nos primeiros dias</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Campanha de Mensagens (WhatsApp / Direct / Messenger)</h4><div class="guide-meta">Objetivo: Engajamento · leva o clique direto para uma conversa</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Engajamento <i>›</i> <span class="hl">Aplicativos de mensagens</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/43bb362f-d95b-4385-94f4-a782779e4487" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Engajamento — Aplicativo de mensagens</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn sel">WhatsApp</div>
+            <div class="obj-btn">Messenger</div>
+            <div class="obj-btn">Instagram Direct</div>
+          </div>
+          <div class="toggle-row" style="margin-top:10px;"><span>Modelo: Formulário no WhatsApp</span><span class="sw on"></span></div>
+          <div class="toggle-row"><span>Modelo: Iniciar conversas</span><span class="sw"></span></div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de aplicativo de mensagens — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Engajamento</strong> → meta de otimização <strong>"Aplicativos de mensagens"</strong></li>
+        <li>Escolher o app de destino: WhatsApp, Messenger ou Instagram Direct</li>
+        <li>Selecionar o modelo de mensagem: <strong>"Iniciar conversas"</strong> (mensagem de boas-vindas simples, mais volume) ou <strong>"Formulário no WhatsApp"</strong> (perguntas de qualificação antes de liberar o atendimento, leads mais quentes)</li>
+        <li>Se escolher formulário: montar as perguntas de qualificação dentro do próprio anúncio</li>
+        <li>Definir segmentação (local, idade, público personalizado/lookalike)</li>
+        <li>Subir o criativo com CTA "Enviar mensagem" e testar o botão antes de publicar, abrindo uma conversa de teste</li>
+        <li>Publicar e monitorar o tempo de primeira resposta da equipe — mensagem sem resposta rápida derruba a qualidade do anúncio</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Catálogo para E-commerce</h4><div class="guide-meta">Objetivo: Vendas · requer catálogo de produtos já sincronizado na Business Manager</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Vendas <i>›</i> <span class="hl">Usar catálogo</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/d04081cb-0c5a-420d-9c35-8e6c7cf399bf" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Vendas — Usar catálogo</div>
+        <div class="ui-mock-body">
+          <div class="field-grid">
+            <div class="field"><label>Catálogo</label><div class="fake-input">Loja Genérica — Catálogo Principal</div></div>
+            <div class="field"><label>Conjunto de produtos</label><div class="fake-input">Todos os produtos</div></div>
+          </div>
+          <div class="obj-grid" style="margin-top:10px;">
+            <div class="obj-btn sel">Carrossel</div>
+            <div class="obj-btn">Imagem única</div>
+            <div class="obj-btn">Coleção</div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de catálogo — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Confirmar que o catálogo de produtos está sincronizado e ativo na Business Manager (Comércio → Catálogos)</li>
+        <li>Criar campanha com objetivo <strong>Vendas</strong> → selecionar "Usar catálogo" (Catálogo Advantage+)</li>
+        <li>No conjunto de anúncios, escolher a fonte do catálogo e o conjunto de produtos a anunciar</li>
+        <li>Definir o evento de conversão como <strong>"Site"</strong>, com otimização para compra</li>
+        <li>Escolher o formato <strong>Carrossel</strong> (recomendado — mostra vários produtos em sequência)</li>
+        <li>Conferir o destino do clique: precisa cair na página exata do produto anunciado — nunca na home ou numa coleção genérica</li>
+        <li>Revisar preço/estoque exibidos (vêm do catálogo, não do anúncio) e publicar</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Vendas no site</h4><div class="guide-meta">Objetivo: Vendas · conversão "Comprar" · requer pixel + evento de compra validado</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Vendas <i>›</i> <span class="hl">Conversão: Site</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Criando-e-configurando-suas-campanhas-de-vendas-no-site-464e9720bc3848429082f953c3d08b82" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Vendas — Evento de conversão</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn">Ver conteúdo</div>
+            <div class="obj-btn">Adicionar ao carrinho</div>
+            <div class="obj-btn">Iniciar finalização de compra</div>
+            <div class="obj-btn sel">Comprar</div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de evento de conversão — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Vendas</strong> → conversão <strong>"Site"</strong></li>
+        <li>Selecionar o evento de otimização <strong>"Comprar"</strong> (nunca "Cliques no link" — esse evento não confirma venda)</li>
+        <li>Definir segmentação: local, idade, gênero e públicos personalizados/lookalike de compradores</li>
+        <li>Escolher CBO ou ABO conforme a tabela da seção anterior</li>
+        <li>Subir o criativo com a URL final apontando direto para o produto/carrinho, não para a home</li>
+        <li>Escrever texto e CTA de ação ("Comprar agora", "Garanta o seu")</li>
+        <li>Antes de publicar, confirmar no Gerenciador de Eventos que o evento "Comprar" está disparando corretamente (ver seção 5)</li>
+        <li>Publicar</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Leads — Landing Page</h4><div class="guide-meta">Objetivo: Cadastro (Leads) · usa o pixel/evento de conversão da seção 5</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Cadastro <i>›</i> <span class="hl">no site</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Campanha-de-Leads---Landing-Page-01135f2e599c41a5a728c1009ed86f3b" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Cadastro — Local de conversão</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn sel">Site</div>
+            <div class="obj-btn">Formulário instantâneo</div>
+            <div class="obj-btn">Chamada telefônica</div>
+            <div class="obj-btn">Aplicativo de mensagens</div>
+          </div>
+          <div class="field-grid" style="margin-top:10px;">
+            <div class="field"><label>URL de destino</label><div class="fake-input">www.exemplo.com.br/landing-page</div></div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de local de conversão — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Cadastro</strong> → escolher <strong>"no site"</strong> (não "Formulário instantâneo")</li>
+        <li>Confirmar que o pixel e o evento de conversão (ex: Lead) já estão instalados e testados na landing page</li>
+        <li>Definir segmentação de público conforme o ICP</li>
+        <li>Subir o criativo com a URL da landing page (nunca a home institucional)</li>
+        <li>Escrever headline e CTA reforçando a oferta específica da LP</li>
+        <li>Publicar</li>
+      </ol>
+      <p style="margin-top:10px; font-size:12.5px; color:var(--gray);"><strong>Observação do próprio processo original:</strong> repetir os mesmos passos trocando apenas o objetivo para "Tráfego" gera uma campanha irmã de topo de funil, direcionando mais volume para a mesma LP.</p>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Leads — Formulário nativo</h4><div class="guide-meta">Objetivo: Cadastro (Leads) · não depende de landing page própria</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Cadastro <i>›</i> <span class="hl">Formulários instantâneos</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Campanha-de-Leads---Formul-rio-nativo-c02b83d5f1254112909a0bd40f5dbcf7" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Formulário instantâneo — Estrutura</div>
+        <div class="ui-mock-body">
+          <ul class="check-list-mock">
+            <li><span class="cb on"></span>Tela de boas-vindas</li>
+            <li><span class="cb on"></span>Perguntas de qualificação</li>
+            <li><span class="cb on"></span>Política de privacidade</li>
+            <li><span class="cb on"></span>Tela de agradecimento</li>
+          </ul>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da estrutura do formulário — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Cadastro</strong> → escolher <strong>"Formulários instantâneos"</strong></li>
+        <li>Montar o formulário dentro do próprio Meta: tela de boas-vindas, perguntas de qualificação, tela de agradecimento</li>
+        <li>Definir segmentação de público</li>
+        <li>Subir o criativo com CTA "Cadastre-se" / "Saiba mais"</li>
+        <li>Conectar o formulário a uma planilha ou CRM (integração direta ou download manual) — sem isso, o lead fica só dentro do Meta e se perde</li>
+        <li>Publicar</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Distribuição de conteúdo</h4><div class="guide-meta">Objetivo: Engajamento · alcance/visualização de vídeo ou interação com a publicação</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Gerenciador de Anúncios <i>›</i> Criar <i>›</i> Engajamento <i>›</i> <span class="hl">Visualizações de vídeo</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Campanha-de-distribui--o-de-conte-do-46b21a3f703c4237b4c6367d5d0582b6" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Engajamento — Meta de otimização</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn sel">Visualizações de vídeo</div>
+            <div class="obj-btn">Interação com a publicação</div>
+          </div>
+          <div class="toggle-row" style="margin-top:10px;"><span>Audience Network</span><span class="sw"></span></div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de meta de otimização — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Engajamento</strong> → escolher a meta: <strong>"Visualizações de vídeo"</strong> ou <strong>"Interação com a publicação"</strong></li>
+        <li>Em Posicionamentos manuais, desativar <strong>"Audience Network"</strong> — as visualizações geradas ali tendem a ser forçadas (usuário assiste para ganhar recompensa em app/jogo) e não qualificadas</li>
+        <li>Definir segmentação de público</li>
+        <li>Subir o criativo (vídeo ou carrossel) já publicado no perfil</li>
+        <li>Publicar e acompanhar a métrica de retenção/ThruPlay, não só o custo por visualização</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Estratégia WAR (dominação de território local)</h4><div class="guide-meta">Para negócios com raio de atuação físico pequeno</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Segmentação <i>›</i> Localização <i>›</i> <span class="hl">Fixar pino manualmente</span> <i>›</i> Raio 2km</div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Estrat-gia-WAR-f3b7b2a46583476dbe1da38089d0e2fa" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Segmentação — Local</div>
+        <div class="ui-mock-body">
+          <div class="field-grid">
+            <div class="field"><label>Alfinete no mapa</label><div class="fake-input">Endereço exato do estabelecimento</div></div>
+            <div class="field"><label>Raio</label><div class="fake-input">2 km (inicial)</div></div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de localização — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Engajamento</strong> ou <strong>Cadastro/Mensagens</strong>, conforme a oferta</li>
+        <li>Na segmentação de local, usar a opção de <strong>fixar o pino manualmente</strong> no endereço exato do estabelecimento — nunca selecionar o bairro ou CEP inteiro</li>
+        <li>Definir o raio inicial em <strong>2 km</strong></li>
+        <li>Completar a segmentação com idade e interesses relevantes ao público local</li>
+        <li>Subir o criativo com uma oferta local clara ("só nesta região", "válido para quem está perto")</li>
+        <li>Publicar e acompanhar a métrica de <strong>Frequência</strong> diariamente</li>
+        <li>Se a frequência subir muito (sinal de saturação do público pequeno), aumentar o raio aos poucos — nunca de uma vez</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Estratégia de lance</h3></span></summary>
+      <div class="topic-body">
+      <p>Lance e orçamento funcionam como acelerador e freio: andam sempre juntos. Aumentar o orçamento aumenta o lance automaticamente (e vice-versa).</p>
+      <table>
+        <tr><th>Estratégia</th><th>Como funciona</th><th>Quando usar</th></tr>
+        <tr><td>Valor / Volume mais alto <span class="badge ok">Padrão</span></td><td>100% automático — busca o máximo de resultado dentro do orçamento</td><td>Praticamente sempre — é a estratégia default e a mais usada</td></tr>
+        <tr><td>Limite de lance</td><td>Define um teto manual — não controla o custo por ação final</td><td>Casos específicos de controle de leilão</td></tr>
+        <tr><td>Meta de custo por resultado</td><td>Tenta manter o custo perto de um valor-alvo, com flutuação</td><td>Quando já existe um CPA-alvo validado</td></tr>
+        <tr><td>Meta de ROAS</td><td>Define retorno mínimo sobre o investimento</td><td>E-commerce, campanhas de Vendas/Catálogo</td></tr>
+      </table>
+      <p style="font-size:13px;">Lance alto = paga mais caro por resultado, mas aparece mais. Pagar mais caro por resultado não é necessariamente ruim — o objetivo é achar a pessoa do mercado que vale a pena pagar mais caro para converter.</p>
+      </div>
+    </details>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Meta Ads —</p>
+    </div>
+
+    <div class="platform-block google">
+    <div class="platform-badge"><span class="pdot"></span>Google Ads — início</div>
+    <h3>Cardápio de campanhas do Google Ads — passo a passo de cada tipo</h3>
+    <p>No Google Ads a arquitetura muda: em vez de "objetivo → conjunto de anúncios → anúncio" (Meta), a lógica é <strong>rede/tipo de campanha → grupo de anúncios (1 por dor/tema) → anúncio + palavras-chave</strong> (ver diagrama da seção 4).</p>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>As redes do Google Ads</h3></span></summary>
+      <div class="topic-body">
+      <table>
+        <tr><th>Rede</th><th>O que é</th><th>Melhor para</th></tr>
+        <tr><td>Pesquisa (Search)</td><td>O Google clássico — aparece no topo quando alguém pesquisa por uma palavra-chave</td><td>Captura de demanda ativa; todo anunciante deve estar aqui pelo menos com o nome da própria marca</td></tr>
+        <tr><td>Display (GDN)</td><td>Banners em sites parceiros do Google</td><td>Remarketing — aparecer para quem já interagiu antes</td></tr>
+        <tr><td>YouTube</td><td>Anúncio antes do vídeo, nos resultados de busca do YouTube ou como recomendação</td><td>Reconhecimento, consideração e conversão por vídeo</td></tr>
+        <tr><td>Shopping</td><td>Produto com foto, preço e nome da loja direto na busca</td><td>E-commerce — exige Google Merchant Center</td></tr>
+        <tr><td>Maps</td><td>Campanhas locais</td><td>Atrair visita física ao estabelecimento</td></tr>
+        <tr><td>Gmail / Discover</td><td>Anúncio direto na caixa de entrada ou no feed de notícias do Google</td><td>Alcance complementar, menor prioridade inicial</td></tr>
+      </table>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Rede de Pesquisa (Search)</h4><div class="guide-meta">Captura demanda ativa — quem já está buscando a solução no Google</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Google Ads <i>›</i> Nova campanha <i>›</i> Vendas/Leads <i>›</i> <span class="hl">Rede de Pesquisa</span></div>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Palavras-chave — Tipo de correspondência</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid">
+            <div class="obj-btn">Ampla</div>
+            <div class="obj-btn sel">"Frase"</div>
+            <div class="obj-btn">[Exata]</div>
+          </div>
+          <div class="field-grid" style="margin-top:10px;">
+            <div class="field"><label>Grupo de anúncios</label><div class="fake-input">01 — [Dor/tema específico]</div></div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de palavras-chave — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha → objetivo (Vendas, Leads ou Tráfego do site) → tipo <strong>Pesquisa</strong></li>
+        <li>Definir localização e idioma do público</li>
+        <li>Escolher a estratégia de lance (ver tabela abaixo)</li>
+        <li>Criar 1 grupo de anúncios por dor/tema — nunca misturar intenções diferentes no mesmo grupo</li>
+        <li>Adicionar palavras-chave por camada de intenção (ver seção 7) com o tipo de correspondência certo</li>
+        <li>Criar o anúncio em formato <strong>RSA (Responsive Search Ad)</strong>: até 15 títulos e 4 descrições — o Google testa as combinações automaticamente</li>
+        <li>Aplicar as palavras-chave negativas globais (seção 7) e publicar</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Performance Max</h4><div class="guide-meta">Uma campanha, todos os inventários do Google (Pesquisa, Display, YouTube, Gmail, Shopping)</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Google Ads <i>›</i> Nova campanha <i>›</i> Vendas <i>›</i> <span class="hl">Performance Max</span></div>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Grupo de recursos</div>
+        <div class="ui-mock-body">
+          <ul class="check-list-mock">
+            <li><span class="cb on"></span>Títulos (até 15)</li>
+            <li><span class="cb on"></span>Descrições (até 5)</li>
+            <li><span class="cb on"></span>Imagens</li>
+            <li><span class="cb on"></span>Logotipos</li>
+            <li><span class="cb"></span>Vídeos (opcional, recomendado)</li>
+          </ul>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica do grupo de recursos — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Criar campanha com objetivo <strong>Vendas</strong> ou <strong>Leads</strong> → tipo <strong>Performance Max</strong></li>
+        <li>Conectar o feed de produtos (Merchant Center) se for e-commerce — ou seguir sem feed para geração de leads</li>
+        <li>Montar os "grupos de recursos": títulos, descrições, imagens, logotipos e vídeos — quanto mais variações, melhor o algoritmo testa combinações</li>
+        <li>Definir públicos de sinal (Audience Signals) — base de clientes, remarketing, interesses — para acelerar o aprendizado inicial</li>
+        <li>Definir orçamento diário e meta de CPA ou ROAS</li>
+        <li>Publicar — o Google decide sozinho onde exibir (Pesquisa/Display/YouTube/Gmail/Shopping); não é possível escolher a rede manualmente</li>
+      </ol>
+      <p style="margin-top:10px; font-size:12.5px; color:var(--gray);"><strong>Ponto de atenção:</strong> por ter pouca transparência de onde o anúncio aparece, reserve a maior parte da verba para Pesquisa até ter histórico de conversão antes de escalar Performance Max.</p>
+      </div>
+    </details>
+
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Remarketing (Display)</h4><div class="guide-meta">Reimpacta quem visitou o site sem converter — equivalente ao remarketing do Meta</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Google Ads <i>›</i> Nova campanha <i>›</i> Tráfego do site <i>›</i> <span class="hl">Rede de Display</span></div>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Públicos — Remarketing</div>
+        <div class="ui-mock-body">
+          <div class="field-grid">
+            <div class="field"><label>Público</label><div class="fake-input">Visitantes do site — últimos 30 dias</div></div>
+          </div>
+          <div class="toggle-row" style="margin-top:10px;"><span>Excluir quem já converteu</span><span class="sw on"></span></div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de públicos — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Pré-requisito: tag do Google Ads/GTM instalada e público de remarketing com volume mínimo (ver seção 5)</li>
+        <li>Criar campanha com objetivo <strong>Vendas</strong>, <strong>Leads</strong> ou <strong>Tráfego do site</strong> → tipo <strong>Display</strong></li>
+        <li>Em públicos, selecionar o público de remarketing (visitantes do site nos últimos X dias)</li>
+        <li>Excluir quem já converteu, para não pagar por quem já é cliente</li>
+        <li>Subir os criativos responsivos de display (imagens + títulos + descrições, tamanhos variados)</li>
+        <li>Definir orçamento — remarketing costuma pedir verba bem menor que prospecção</li>
+        <li>Publicar e acompanhar frequência (evitar fadiga do mesmo anúncio para a mesma pessoa)</li>
+      </ol>
+      </div>
+    </details>
+
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Estratégia de lance (Google Ads)</h3></span></summary>
+      <div class="topic-body">
+      <p style="font-size:13px;">Diferente do Meta (onde o lance segue o orçamento automaticamente), no Google Ads <strong>lance e orçamento são independentes</strong>: o orçamento é o motor, o lance é o pedal do acelerador. Motor potente com lance baixo = campanha não decola, mesmo com muito dinheiro disponível.</p>
+      <table>
+        <tr><th>Grupo</th><th>Estratégia</th><th>Como funciona</th></tr>
+        <tr><td rowspan="5">CPA — foco em conversão</td><td>Maximizar conversões <span class="badge ok">Automática</span></td><td>Gasta todo o orçamento buscando o máximo de conversões, sem limite por ação</td></tr>
+        <tr><td>Maximizar valor da conversão <span class="badge ok">Automática</span></td><td>Foco no valor total das vendas, não na quantidade</td></tr>
+        <tr><td>CPA desejado (Target CPA)</td><td>Você define o custo-alvo por conversão; o Google tenta manter esse valor</td></tr>
+        <tr><td>ROAS desejado (Target ROAS)</td><td>Você define o retorno mínimo esperado sobre o investimento</td></tr>
+        <tr><td>Custo por clique otimizado (eCPC)</td><td>Ajusta o lance automaticamente pela probabilidade de conversão — meio-termo entre CPC e CPA</td></tr>
+        <tr><td rowspan="2">CPC — foco em clique</td><td>CPC manual</td><td>Você escolhe quanto pagar por clique — mais controle, pode não gastar tudo</td></tr>
+        <tr><td>Maximizar cliques <span class="badge ok">Automática</span></td><td>O Google busca o maior volume de cliques possível, sem controlar o custo por clique — ideal para objetivo Tráfego</td></tr>
+        <tr><td rowspan="3">CPM — foco em visibilidade</td><td>CPM desejado</td><td>Você define quanto pagar para aparecer mil vezes, independente de clique</td></tr>
+        <tr><td>Parcela de impressões desejada</td><td>Foco em aparecer no topo da Rede de Pesquisa, mesmo sem clique</td></tr>
+        <tr><td>vCPM (CPM visível)</td><td>100% do foco em aparecer — zero foco em clique</td></tr>
+        <tr><td rowspan="2">CPV — foco em vídeo</td><td>CPV desejado</td><td>Você define quanto pagar por visualização (YouTube)</td></tr>
+        <tr><td>CPV máximo</td><td>O Google gasta tudo buscando o máximo de visualizações, sem você definir o custo</td></tr>
+      </table>
+      <table>
+        <tr><th>Objetivo</th><th>Melhor estratégia inicial</th></tr>
+        <tr><td>Vendas diretas</td><td>CPA desejado ou ROAS desejado</td></tr>
+        <tr><td>Cadastros/Leads</td><td>CPA desejado</td></tr>
+        <tr><td>Tráfego</td><td>CPC manual ou Maximizar cliques</td></tr>
+        <tr><td>Visibilidade/Branding</td><td>CPM desejado ou Parcela de impressões</td></tr>
+        <tr><td>Vídeo (YouTube)</td><td>CPV desejado, se quiser controle</td></tr>
+      </table>
+      <p style="font-size:13px;">Assim como no Meta, as estratégias automáticas (Maximizar conversões/valor/cliques) só funcionam bem depois de o histórico de conversão ter volume mínimo — em conta nova, comece automático e migre para CPA/ROAS desejado quando tiver dado suficiente. <strong>Lema:</strong> lance bom é lance testado.</p>
+      <p style="font-size:12.5px; color:var(--gray);"><strong>Glossário rápido:</strong> CPA = custo por ação/conversão · CPC = custo por clique · CPM = custo por mil impressões · CPV = custo por visualização · ROAS = retorno sobre o investimento.</p>
+      </div>
+    </details>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Google Ads —</p>
+    </div>
+
+    <div class="platform-block shared">
+    <div class="platform-badge"><span class="pdot"></span>Resumo multiplataforma</div>
+    <details class="topic-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h3>Campanhas definidas para [NOME DO CLIENTE]</h3></span></summary>
+      <div class="topic-body">
+      <p>Padrão: <strong>1 dor/oferta = 1 campanha = 1 landing page</strong>. Mínimo 3 campanhas por plataforma ativa. Preencha [Plataforma] com Meta Ads ou Google Ads conforme o tipo escolhido nos cardápios acima.</p>
+      <div class="card-grid">
+        <div class="card"><h4>Campanha 1 — [Dor/oferta]</h4><p>[Plataforma] · [Tipo/Objetivo do cardápio acima] · R$[X]/dia<br>Destino: [URL/WhatsApp]</p></div>
+        <div class="card"><h4>Campanha 2 — [Dor/oferta]</h4><p>[Plataforma] · [Tipo/Objetivo do cardápio acima] · R$[X]/dia<br>Destino: [URL/WhatsApp]</p></div>
+        <div class="card"><h4>Campanha 3 — [Dor/oferta]</h4><p>[Plataforma] · [Tipo/Objetivo do cardápio acima] · R$[X]/dia<br>Destino: [URL/WhatsApp]</p></div>
+        <div class="card" style="border-top-color:var(--black)"><h4>Campanha 4 — Remarketing</h4><p>Visitantes não convertidos · R$[X]/dia<br>Objeção tratada: [qual]</p></div>
+      </div>
+      <div class="screenshot-slot">
+        <span class="icon">📸</span>
+        <strong>Screenshot real pendente</strong><br>
+        Capturar tela de configuração de cada campanha ativa na conta do cliente após o lançamento.
+      </div>
+      </div>
+    </details>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 10. CRIATIVOS (MOCKUPS) =================== -->
+<section id="s10">
+  <div class="wrap">
+    <div class="kicker">10</div>
+    <h2>Estrutura de criativos e anúncios</h2>
+    <p>Prévias abaixo usam a copy real do Banco de Copy do cliente — nunca texto genérico.</p>
+
+    <div class="platform-block meta">
+    <div class="platform-badge"><span class="pdot"></span>Meta Ads — início</div>
+    <h3>Meta Ads — previews</h3>
+    <div class="mockup-row">
+      <div class="ig-post">
+        <div class="ig-head"><div class="ig-avatar"></div><div class="ig-name">[cliente.oficial]</div></div>
+        <div class="ig-art">[Hook visual<br>da arte]<br><span>[palavra de destaque]</span></div>
+        <div class="ig-actions">♡ ⤳ ⌲</div>
+        <div class="ig-caption"><b>[cliente.oficial]</b>[Texto principal do anúncio — 1ª linha antes do "ver mais"]</div>
+        <div class="ig-cta">[Headline curta] <span>[CTA →]</span></div>
+      </div>
+      <div class="ig-story">
+        <div class="story-bar"></div>
+        <div class="story-hook">[Hook em 3s]<br><span>[gatilho]</span></div>
+        <div class="story-cta">[CTA: Saiba mais]</div>
+      </div>
+    </div>
+    <div class="screenshot-slot" style="margin-top:22px">
+      <span class="icon">📸</span>
+      <strong>Screenshot real pendente</strong><br>
+      Substituir a prévia acima pelo print real do anúncio já publicado (Meta Ads Manager → visualização do anúncio).
+    </div>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Meta Ads —</p>
+    </div>
+
+    <div class="platform-block google">
+    <div class="platform-badge"><span class="pdot"></span>Google Ads — início</div>
+    <h3>Google Ads — RSA (preview de SERP)</h3>
+    <div class="serp">
+      <span class="ad-tag">Anúncio</span><span class="serp-url">www.[dominio].com.br</span>
+      <div class="serp-title">[Título 1 — palavra-chave] | [Título 2 — benefício]</div>
+      <div class="serp-desc">[Descrição com benefício + CTA, até 90 caracteres]. [Segunda descrição com prova/urgência].</div>
+      <div class="serp-links"><span>[Sitelink 1]</span><span>[Sitelink 2]</span><span>[Sitelink 3]</span><span>[Sitelink 4]</span></div>
+    </div>
+    <div class="screenshot-slot" style="margin-top:22px">
+      <span class="icon">📸</span>
+      <strong>Screenshot real pendente</strong><br>
+      Substituir a prévia acima pelo print real do anúncio já publicado (Google Ads → pré-visualização de anúncio).
+    </div>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Google Ads —</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 11. KPIs =================== -->
+<section id="s11">
+  <div class="wrap">
+    <div class="kicker">11</div>
+    <h2>KPIs e metas por etapa do funil</h2>
+    <table>
+      <tr><th>Métrica</th><th>Etapa</th><th>Meta do cliente</th><th>Fonte</th></tr>
+      <tr><td>CTR</td><td>Topo</td><td>[X%]</td><td>[Histórico ou ⚠ estimativa]</td></tr>
+      <tr><td>CPC</td><td>Topo/Meio</td><td>[R$ X]</td><td>[idem]</td></tr>
+      <tr><td>Taxa de conversão da LP</td><td>Meio/Fundo</td><td>[X%]</td><td>[idem]</td></tr>
+      <tr><td>CPL</td><td>Fundo</td><td>[R$ X]</td><td>[idem]</td></tr>
+      <tr><td><strong>CPA</strong></td><td>Fundo</td><td><strong>[≤ CPA-alvo da seção 2]</strong></td><td>[idem]</td></tr>
+      <tr><td>ROAS (e-commerce)</td><td>Fundo</td><td>[X:1]</td><td>[idem]</td></tr>
+    </table>
+    <div class="callout">Toda meta sem histórico do cliente deve ser marcada <span class="badge pend">⚠ Estimativa</span> — validar após 2 semanas de veiculação.</div>
+
+    <div class="platform-block meta">
+    <div class="platform-badge"><span class="pdot"></span>Meta Ads — início</div>
+    <h3>Como ler o painel: Detalhamento e Colunas</h3>
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Detalhamento de métricas</h4><div class="guide-meta">Botão "Detalhamento" no topo da tabela do Gerenciador de Anúncios</div></span></summary>
+      <div class="guide-body">
+      <div class="ui-path">Campanhas <i>›</i> Tabela de resultados <i>›</i> <span class="hl">Detalhamento</span></div>
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Detalhamento-de-M-tricas-bb167599699341d6a44f33bf58b65b64" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Detalhamento</div>
+        <div class="ui-mock-body">
+          <div class="obj-grid" style="grid-template-columns:1fr;">
+            <div class="obj-btn">Hora</div>
+            <div class="obj-btn sel">Dados demográficos</div>
+            <div class="obj-btn">Região</div>
+            <div class="obj-btn">Plataforma</div>
+            <div class="obj-btn">Posicionamento e dispositivo</div>
+          </div>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica do menu de detalhamento — sem dado de conta real</figcaption>
+      </div>
+      <p style="margin:0 0 8px; font-size:13px;">Quebra os resultados da campanha/conjunto/anúncio por um recorte por vez. Recortes disponíveis:</p>
+      <ol class="guide-steps">
+        <li><strong>Hora</strong> — identifica horário de melhor desempenho</li>
+        <li><strong>Dados demográficos</strong> — idade e gênero que mais convertem</li>
+        <li><strong>Região</strong> — cidade/estado com melhor custo</li>
+        <li><strong>Veiculação → Plataforma</strong> — Facebook vs. Instagram</li>
+        <li><strong>Veiculação → Posicionamento e dispositivo</strong> — feed, stories, reels, mobile vs. desktop</li>
+        <li><strong>Ação</strong> — tipo de conversão específica</li>
+      </ol>
+      </div>
+    </details>
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>🧭 Guia passo a passo — Criar coluna/métrica personalizada</h4><div class="guide-meta">Botão "Colunas" → "Personalizar colunas"</div></span></summary>
+      <div class="guide-body">
+      <a class="src-btn" href="https://app.tango.us/app/workflow/Configura--o-de-Colunas-no-Meta-Ads-b6cf49aa86084ee1a00958548443f4f0" target="_blank" rel="noopener">🔗 Ver tutorial original</a>
+      <p class="src-note">Tutorial de terceiro (curso) — pode conter tela de conta/negócio não relacionado a este projeto.</p>
+      <div class="ui-mock">
+        <div class="ui-mock-head"><span class="dot"></span>Personalizar colunas</div>
+        <div class="ui-mock-body">
+          <ul class="check-list-mock">
+            <li><span class="cb on"></span>Valor usado</li>
+            <li><span class="cb on"></span>Resultados</li>
+            <li><span class="cb on"></span>Custo por resultado</li>
+            <li><span class="cb"></span>Alcance</li>
+            <li><span class="cb"></span>Frequência</li>
+          </ul>
+        </div>
+        <figcaption style="color:var(--gray); font-size:11px;">Ilustração genérica da tela de colunas — sem dado de conta real</figcaption>
+      </div>
+      <ol class="guide-steps">
+        <li>Em "Personalizar colunas", marque/desmarque as métricas padrão que quer ver na tabela</li>
+        <li>Para uma métrica que não existe por padrão, clique em "Mais" → "Personalizado" → "Criar uma métrica personalizada"</li>
+        <li>Monte a fórmula (ex: Valor usado ÷ Leads = Custo por Lead), escolha o formato (numérico, monetário, %) e quem pode visualizar</li>
+        <li>Salve e aplique — a coluna passa a aparecer em todas as tabelas da conta</li>
+      </ol>
+      </div>
+    </details>
+    <p style="font-size:12.5px; color:var(--gray);">Google Ads tem equivalente próprio (colunas personalizadas na tabela de campanhas + relatórios em "Segmentos"), mas com telas e nomenclatura diferentes das descritas acima.</p>
+    <p style="text-align:right; font-size:11px; color:var(--gray); margin:4px 0 0;">— fim do bloco Meta Ads —</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 12. ERROS COMUNS =================== -->
+<section class="dark" id="s12">
+  <div class="wrap">
+    <div class="kicker">12</div>
+    <h2>Erros comuns a evitar (primeira campanha)</h2>
+    <ul class="errors">
+      <li>Lançar sem validar o evento de conversão disparando corretamente</li>
+      <li>Trocar criativo/público antes de sair da fase de aprendizado (mín. 50 conversões ou 3–7 dias)</li>
+      <li>Aumentar orçamento de forma brusca (&gt;20% de uma vez)</li>
+      <li>Segmentar público amplo demais ou estreito demais</li>
+      <li>Mandar tráfego para home institucional em vez de LP com oferta clara</li>
+      <li>Rodar mais de uma oferta/dor na mesma campanha</li>
+      <li>Pausar no primeiro dia ruim sem checar o motivo</li>
+      <li>Ignorar palavras-chave negativas (Google Ads)</li>
+      <li>Não configurar Conversions API — depender só do pixel do navegador</li>
+    </ul>
+
+    <div class="platform-block meta">
+    <div class="platform-badge"><span class="pdot"></span>Meta Ads</div>
+    <details class="guide-box">
+      <summary><span class="chev">▸</span><span class="summary-text"><h4>O que é a "fase de aprendizado"</h4><div class="guide-meta">Status que toda campanha nova recebe enquanto o algoritmo ainda está descobrindo quem converte</div></span></summary>
+      <div class="guide-body">
+      <p style="margin:0 0 8px; font-size:13px; color:#d7d7d7;">A campanha passa por 3 status: <strong>fase de aprendizado</strong> (colhendo dados), <strong>fase de aprendizado limitado</strong> (poucos dados para entender o público) e <strong>fase ativa</strong> (dados suficientes para otimizar).</p>
+      <p style="margin:0; font-size:13px; color:#d7d7d7;"><strong>Como sair dela mais rápido:</strong> aumentar orçamento e fundir grupos de anúncios parecidos, otimizar o conjunto de anúncios, ter o pixel aquecido — ou, muitas vezes, simplesmente não mexer em nada e esperar.</p>
+      </div>
+    </details>
+    <p style="font-size:12px; color:#9c9c9c; margin-top:8px;">Google Ads tem um conceito parecido (status "Em aprendizado" ao mudar lance/orçamento/palavras-chave), mas com regras próprias, diferentes das descritas acima.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 13. CHECKLIST DE LANÇAMENTO =================== -->
+<section id="s13">
+  <div class="wrap">
+    <div class="kicker">13</div>
+    <h2>Checklist de lançamento</h2>
+    <ul class="checklist">
+      <li>Pré-requisitos técnicos (seção 3) todos ✅</li>
+      <li>Evento de conversão testado nas últimas 24h</li>
+      <li>Landing page revisada (mobile, formulário, botão WhatsApp)</li>
+      <li>UTMs configuradas em todos os links de destino</li>
+      <li>Público/palavras-chave revisados contra o ICP</li>
+      <li>Orçamento definido conforme a fase (seção 6)</li>
+      <li>Criativos aprovados, sem texto excessivo na arte</li>
+      <li>Palavras-chave negativas aplicadas</li>
+      <li>CPA-alvo e KPIs documentados antes do lançamento</li>
+      <li>Responsável pela primeira checagem definido (24–48h após ativação)</li>
+    </ul>
+    <div class="screenshot-slot">
+      <span class="icon">📸</span>
+      <strong>Screenshot real pendente</strong><br>
+      Print da campanha ativa (status "Em veiculação") no painel, no dia do lançamento — serve como registro do marco zero.
+    </div>
+  </div>
+</section>
+
+<!-- =================== 14. CADÊNCIA DE OTIMIZAÇÃO =================== -->
+<section id="s14">
+  <div class="wrap">
+    <div class="kicker">14</div>
+    <h2>Cadência de otimização</h2>
+    <p style="font-size:12.5px; color:var(--gray);"><strong>Sobre esta seção:</strong> a lógica abaixo (o que é otimizar, quando otimizar, os fatores de otimização) vale para qualquer plataforma. Os termos usados nos exemplos (público, conjunto de anúncios, criativo) seguem o vocabulário do Meta Ads — no Google Ads, leia "público" como "palavras-chave/públicos de sinal" e "posicionamento" como "rede/tipo de campanha" (ver seções 7 e 9).</p>
+
+    <h3>O que é, de fato, uma otimização</h3>
+    <p>Otimizar não é "aumentar resultado" ou "diminuir custo" isoladamente — é <strong>fazer alterações em períodos pré-determinados, em busca de uma melhora nos resultados</strong>. Três peças compõem isso: as alterações (o quê mexer), o período pré-determinado (quando mexer) e a definição do que conta como melhora.</p>
+
+    <h3>O que conta como "melhora"</h3>
+    <p>Volume e custo puxam em direções opostas — mais conversões geralmente custam mais caro por conversão. Compare:</p>
+    <table>
+      <tr><th>Cenário</th><th>Conversões</th><th>CPA</th><th>Gasto</th></tr>
+      <tr><td>A</td><td>100</td><td>R$ 3,00</td><td>R$ 300</td></tr>
+      <tr><td>B</td><td>80</td><td>R$ 2,50</td><td>R$ 200</td></tr>
+      <tr><td>C</td><td>50</td><td>R$ 2,00</td><td>R$ 100</td></tr>
+    </table>
+    <p style="font-size:13px;">Qual é melhor? <strong>Depende da meta</strong> — não existe resposta certa sem saber quanto o cliente pode pagar por conversão e quanto tem para gastar no dia. Por isso a seção 2 (CPA-alvo) precisa estar calculada antes de qualquer otimização.</p>
+    <div class="callout"><strong>Como definir a meta com critério:</strong> (1) domínio dos números — ticket médio, taxa de conversão e margem do cliente; (2) benchmark — quanto negócios parecidos pagam por lead/clique/CPA no mesmo mercado. Sem esses dois dados não dá para saber se um resultado é bom ou ruim.</div>
+
+    <h3>Quando otimizar (e quando não otimizar)</h3>
+    <p>A análise do painel deve ser <strong>diária</strong> ("bater o olho"), mas a otimização (mexer de fato) segue gatilhos específicos:</p>
+    <div class="card-grid">
+      <div class="card"><h4>Campanha em situação ruim</h4><p>Resultado muito abaixo do esperado — intervenha. Resultado muito acima do esperado também merece desconfiança (pode ser erro de tracking)</p></div>
+      <div class="card"><h4>Pedido do cliente</h4><p>Otimização por pressão externa — nem sempre é a prioridade técnica, mas às vezes precisa acontecer</p></div>
+      <div class="card"><h4>Período agendado</h4><p>Cadência definida com base no volume de dados, se o resultado está dentro ou fora da média, e a duração da campanha</p></div>
+    </div>
+    <p style="font-size:13px;">Regra prática: campanhas <strong>curtas</strong> pedem mais otimizações; campanhas <strong>longas</strong> e com resultado dentro da média pedem otimizações mais espaçadas. Resultado acima da média não precisa de otimização constante — só o abaixo da média precisa.</p>
+
+    <h3>Os fatores que você pode otimizar — frequência por fator</h3>
+    <table>
+      <tr><th>Fator</th><th>Frequência recomendada</th><th>Como otimizar</th></tr>
+      <tr><td><strong>Público-alvo (segmentação)</strong></td><td>A cada 4–7 dias</td><td>5 ações possíveis: substituição (pausar e subir público-teste novo), subjetiva (avaliar qualidade — não vale para objetivo de vendas), expansão/compressão (expandir se CPM caro, restringir se conversão baixa), separação (isolar segmentação em grupo próprio), otimização de anúncios por segmento (anúncio específico por público)</td></tr>
+      <tr><td><strong>Criativos</strong></td><td>2–3 dias (abaixo do esperado) · 7–14 dias (dentro do esperado)</td><td>3 formas: variações do anúncio vencedor (cor, título, design), regravar o mesmo vídeo com final diferente (mantendo o gancho), mudar formato (proporção, legenda, edição)</td></tr>
+      <tr><td>Lance</td><td>Raramente — normalmente atrelado ao orçamento (seção 9)</td><td>Só mexer manualmente se o gasto não estiver saindo</td></tr>
+      <tr><td>Orçamento</td><td>A cada ciclo de fase (seção 6)</td><td>Nunca mais de 20% por vez</td></tr>
+      <tr><td>Estrutura / Pixel / Destino</td><td>Sob auditoria técnica</td><td>Revisar nomenclatura, saúde do pixel e páginas de destino sempre que a campanha performar abaixo do esperado sem causa aparente nos outros fatores</td></tr>
+    </table>
+    <div class="callout block"><strong>Regra de ouro:</strong> público bom não salva anúncio ruim. Um público perfeito com um anúncio genérico não converte — o anúncio funciona como filtro, o público só entrega a audiência certa para esse filtro atuar.</div>
+    <div class="callout"><strong>Regra dos 12 anúncios:</strong> mantenha sempre 6 anúncios ativos e outros 6 prontos para testar. Se você não tem, pelo menos, 10 variações do seu anúncio vencedor rodando ao longo do tempo, está deixando resultado na mesa.</div>
+
+    <h3>Rotina sugerida</h3>
+    <table>
+      <tr><th>Frequência</th><th>O que checar</th><th>Ação</th></tr>
+      <tr><td>Diária (7 primeiros dias)</td><td>Gasto batendo com orçamento, evento disparando</td><td>Ajustar só se houver erro técnico — não otimizar por performance ainda</td></tr>
+      <tr><td>A cada 2–4 dias (campanhas abaixo do esperado)</td><td>CTR, CPC, CPL por público/anúncio</td><td>Aplicar as ações da tabela de fatores acima</td></tr>
+      <tr><td>Semanal (dentro do esperado)</td><td>CPA consolidado, frequência, fadiga criativa</td><td>Realocar verba; trocar criativo com frequência alta</td></tr>
+      <tr><td>Quinzenal</td><td>Novos ângulos para testar</td><td>Alimentar com Banco de Copy atualizado</td></tr>
+      <tr><td>Mensal</td><td>KPIs vs. meta de faturamento</td><td>Reportar e ajustar orçamento com o decisor</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- =================== 15. GLOSSÁRIO =================== -->
+<section id="s15" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="kicker">15</div>
+    <h2>Glossário rápido</h2>
+    <table>
+      <tr><th>Termo</th><th>Significado</th></tr>
+      <tr><td>CBO/ABO</td><td>Otimização de orçamento no nível da campanha ou do conjunto (Meta)</td></tr>
+      <tr><td>CPA</td><td>Custo por Aquisição</td></tr>
+      <tr><td>CPL</td><td>Custo por Lead</td></tr>
+      <tr><td>CTR</td><td>Taxa de cliques — cliques ÷ impressões</td></tr>
+      <tr><td>ROAS</td><td>Retorno sobre investimento em anúncios</td></tr>
+      <tr><td>RSA</td><td>Responsive Search Ads (Google Ads)</td></tr>
+      <tr><td>Fase de aprendizado</td><td>Período em que o algoritmo ainda otimiza entrega</td></tr>
+      <tr><td>Lookalike</td><td>Público semelhante a uma base existente</td></tr>
+      <tr><td>Frequência</td><td>Média de vezes que uma pessoa viu o anúncio</td></tr>
+    </table>
+    <div class="callout block" style="margin-top:24px;">
+      <strong>Regra final:</strong> nenhuma campanha vai ao ar sem rastreamento validado, uma dor clara, um público do ICP e um destino de tráfego com oferta específica.
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

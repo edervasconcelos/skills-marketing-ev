@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manual_MIVev"
+  short_description: "Cria manuais MIV profissionais em HTML"
+  default_prompt: "Use $manual-mivev to create a professional HTML identity manual from client brand sources."
